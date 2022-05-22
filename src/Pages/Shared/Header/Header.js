@@ -8,26 +8,26 @@ const Header = () => {
        <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/">Home</Link>
        </li>
-       <li>
-         <Link to="/appoinment">About us</Link>
+       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
+         <Link to="/about">About us</Link>
        </li>
-       <li>
-         <Link to="/about">My Portfolio</Link>
+       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
+         <Link to="/myportfolio">My Portfolio</Link>
        </li>
-       <li>
-         <Link to="/about">Blogs</Link>
+       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
+         <Link to="/blogs">Blogs</Link>
        </li>
-       <li>
+       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/reviwes">Reviwes</Link>
        </li>
-       <li>
+       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/contactus">Contact Us</Link>
        </li>
      </>
    );
   return (
     <div>
-      <div class="navbar bg-base-100">
+      <div class="navbar bg-base-100 px-5 ">
         <div class="navbar-start">
           <div class="dropdown text-secondary ">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -54,13 +54,14 @@ const Header = () => {
             </ul>
           </div>
           <Link to="/home" class="btn btn-ghost normal-case text-xl">
-            <img className="h-12 w-12" src={logo} alt="" />
+            <div className="grid justify-items-center">
+              <img className="h-10 w-10" src={logo} alt="" />
+              <p className="text-sm text-primary ">All Time Car Parts</p>
+            </div>
           </Link>
         </div>
         <div class="navbar-center hidden lg:flex">
-          <ul class="menu menu-horizontal p-0 font-semibold ">
-          {navBar}
-          </ul>
+          <ul class="menu menu-horizontal p-0 font-semibold ">{navBar}</ul>
         </div>
         <div class="navbar-end">
           <Link
