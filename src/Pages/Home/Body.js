@@ -1,10 +1,12 @@
 import React from 'react';
 import BusinessSummury from './BusinessSummury';
+import Products from './Products';
 import Reviwes from './Reviwes';
 
 const Body = () => {
   return (
     <div>
+      <Products></Products>
       <Reviwes></Reviwes>
       <BusinessSummury></BusinessSummury>
     </div>

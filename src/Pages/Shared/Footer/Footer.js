@@ -27,7 +27,9 @@ const Footer = () => {
           <span class="footer-title">All Time Car Parts</span>
           <a class="link link-hover">About us</a>
           <a class="link link-hover">Contact</a>
-          <a class="link link-hover">Reviwes</a>
+          <a href="#reviwes" class="link link-hover">
+            Reviwes
+          </a>
           <a class="link link-hover">Why chooce us</a>
         </div>
         <div>
