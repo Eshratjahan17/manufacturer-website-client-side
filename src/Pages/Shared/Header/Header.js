@@ -66,7 +66,7 @@ const Header = () => {
         <div class="navbar-end">
           <Link
             to="/login"
-            class="btn bg-primary text-white hover:bg-white hover:text-primary border-0"
+            class="btn hover:bg-primary text-white bg-red-500 hover:text-white border-0"
           >
             Log in
           </Link>

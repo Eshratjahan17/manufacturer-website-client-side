@@ -5,7 +5,7 @@ const Reviwes = () => {
     <div>
       <div
         id="reviwes"
-        className="px-5 my-8  flex lg:flex-row justify-center gap-4 sm:flex-col sm:flex-auto "
+        className="px-5 my-8  flex lg:flex-row justify-center gap-4 sm:flex-col sm:flex-auto  "
       >
         <div class="card w-96 bg-base-100 shadow-xl border-2 border-secondary ">
           <div class="avatar absolute -right-0 -top-9 border-3">

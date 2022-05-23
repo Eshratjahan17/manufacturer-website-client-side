@@ -7,8 +7,8 @@ const Products = () => {
         Our Products
       </h1>
       <div class="divider w-1/4 mx-auto "></div>
-      <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-3 place-content-center pr-2 pl-5 ">
-        <div class="card w-96 bg-secondary shadow-xl">
+      <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-3 place-content-center pr-2 pl-5  ">
+        <div class="card w-96 bg-secondary shadow-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">
           <figure>
             <img
               src="https://api.lorem.space/image/shoes?w=400&h=225"
