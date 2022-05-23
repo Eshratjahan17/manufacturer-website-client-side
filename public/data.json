@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Gear Lever.",
+    "picture": "https://media.istockphoto.com/photos/manual-gearbox-handle-in-the-modern-car-picture-id1146756539?k=20&m=1146756539&s=612x612&w=0&h=XDv4iQH3yv1Bgsu8QJ8Blky1Ifth8M0nvLM9dp6iDxw=",
+    "about": "A gear stick, gear lever, gearshift or shifter, more formally known as a transmission lever, is a metal lever attached to the transmission of an automobile. The term gear stick mostly refers to the shift lever of a manual transmission, while in an automatic transmission, a similar lever is known as a gear selector\r\n",
+    "price": "$3,161.69",
+    "available": "2,353",
+    "minimum": "3,373"
+  },
+  {
+    "name": "Steering wheel.",
+    "picture": "https://www.familyhandyman.com/wp-content/uploads/2019/05/08.jpg",
+    "about": "There are two main types of steering gears used for most modern vehicles: the rack and pinion steering gear and the recirculating ball steering gear.\r\n",
+    "price": "$3,951.31",
+    "available": "1,750",
+    "minimum": "1,743"
+  },
+  {
+    "name": "Windshield wipers.",
+    "picture": "https://media.istockphoto.com/photos/checking-the-windscreen-wiper-picture-id171587297?k=20&m=171587297&s=612x612&w=0&h=t6BZZaTJ7qdTVjj8qWt6HbuF_Q2I-utxdY-5CnleOL4=",
+    "about": "Your vehicle's manual should tell you what size wiper blades you need for each side and could even recommend a brand. Some vehicles have different size requirements for the driver and passenger sides, so read carefully before replacing the blades.\r\n",
+    "price": "$3,189.99",
+    "available": "2,814",
+    "minimum": "3,071"
+  },
+  {
+    "name": "Engine",
+    "picture": "https://media.istockphoto.com/photos/car-engine-disassembled-many-parts-picture-id1139697726?s=170667a",
+    "about": "Engines are of two types, & these are externals combustion engines and internal combustion engines. External combustion engine:- In externals combustion engines, the combustion of fuel takes place outside the engines—for example, the steam engine.\r\n",
+    "price": "$2,839.46",
+    "available": "2,638",
+    "minimum": "3,454"
+  },
+  {
+    "name": "Headlights",
+    "picture": "https://media.istockphoto.com/photos/car-headlight-with-copy-space-macro-view-closeup-of-modern-car-3d-picture-id1308248587?b=1&k=20&m=1308248587&s=170667a&w=0&h=L4-zuzsz7R6UyHauXku6dT9ylWmvH3vqwdCrDfHYMwk=",
+    "about": "A headlamp is a lamp attached to the front of a vehicle to illuminate the road ahead. Headlamps are also often called headlights, but in the most precise usage, headlamp is the term for the device itself and headlight is the term for the beam of light produced and distributed by the device.\r\n",
+    "price": "$2,965.33",
+    "available": "2,776",
+    "minimum": "1,358"
+  },
+  {
+    "name": "Trunk",
+    "picture": "https://www.miscw.com/wp-content/uploads/2018/11/open-your-car-trunk-from-inside.jpg",
+    "about": "Typically, a car trunk is the primary storage area for cargo or luggage in a sedan, coupe or convertible. The word trunk is used primarily in North America, while the word boot is often used in other English-speaking countries\r\n",
+    "price": "$2,148.52",
+    "available": "2,452",
+    "minimum": "1,382"
+  },
+  {
+    "name": "Speedometer",
+    "picture": "https://images.immediate.co.uk/production/volatile/sites/4/2018/07/GettyImages-119721301-0718585.jpg?quality=90&resize=768,574",
+    "about": "speedometer, instrument that indicates the speed of a vehicle, usually combined with a device known as an odometer that records the distance traveled. A speedometer.\r\n",
+    "price": "$2,758.46",
+    "available": "$2,826.13",
+    "minimum": "$2,681.83"
+  },
+  {
+    "name": "WindScreen",
+    "picture": "https://i0.wp.com/info.glass.com/wp-content/uploads/2017/09/windscreen.jpeg?fit=800%2C595&ssl=1",
+    "about": "The windshield or windscreen of an aircraft, car, bus, motorbike, truck, train, boat or streetcar is the front window, which provides visibility while protecting occupants from the elements.\r\n",
+    "price": "$2,801.19",
+    "available": "1,518",
+    "minimum": "2,789"
+  },
+  {
+    "name": "Car Battery",
+    "picture": "https://5.imimg.com/data5/SELLER/Default/2021/1/BU/QG/QE/24077340/car-battery-500x500.jpg",
+    "about": "Car batteries typically last anywhere from two to five years, depending on the battery type, climate and vehicle. Based on the make and model of your vehicle, you can expect to pay around $50 to $120 for a standard car battery and around $90 to $200 for a premium type.\r\n",
+    "price": "$3,713.47",
+    "available": "2,623",
+    "minimum": "1,028"
+  },
+  {
+    "name": "Alternator",
+    "picture": "https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2016/11/335b5e5ddc8e48476669d6fbdc67230a.jpg",
+    "about": "An alternator, as an integral part of every combustion engine vehicle, its main responsibility is to convert chemical energy to electrical energy so that you can charge and replenish the battery in your engine and other electrical components in a car\r\n",
+    "price": "$3,611.78",
+    "available": "3,827",
+    "minimum": "1,459"
+  },
+  {
+    "name": "front axle",
+    "picture": "https://www.ubuy.com.bd/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjF5QzFwK1prRkwuX0FDX1NMMTUwMF8uanBn.jpg",
+    "about": "The front axle facilitates steering, absorbs shocks from driving on uneven road surfaces and carries the weight of the front part of the vehicle. Stub axle: These carry the front wheels of the car.\r\n",
+    "price": "$2,131.70",
+    "available": "2,527",
+    "minimum": "3,856"
+  }
+]

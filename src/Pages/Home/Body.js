@@ -4,9 +4,15 @@ import Products from './Products';
 import Reviwes from './Reviwes';
 
 const Body = () => {
+  
+  // console.log(tools);
+
   return (
     <div>
-      <Products></Products>
+     
+        <Products ></Products>
+      
+
       <Reviwes></Reviwes>
       <BusinessSummury></BusinessSummury>
     </div>

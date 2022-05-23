@@ -73,13 +73,24 @@ const Header = () => {
         </div>
         <div class="navbar-end">
           {user ? (
-            <Link
-              onClick={handleSignOut}
-              to="/login"
-              class="btn hover:bg-primary text-white bg-red-500 hover:text-white border-0"
-            >
-              Sign Out
-            </Link>
+            <div className="flex justify-center items-center ">
+              <Link
+                to="/"
+                class=" hover:bg-secondary text-secondary hover:text-white hover:rounded-md p-3 mr-2 font-semibold"
+              >
+                DashBoard
+              </Link>
+
+              <span class="text-xs font-bold mr-2">{user.displayName}</span>
+
+              <Link
+                onClick={handleSignOut}
+                to="/"
+                class="btn hover:bg-primary text-white bg-red-500 hover:text-white border-0"
+              >
+                Sign Out
+              </Link>
+            </div>
           ) : (
             <Link
               to="/login"
