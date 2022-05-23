@@ -3,23 +3,32 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <div className='px-5 my-5'>
+    <div className="px-5 my-5">
       <footer class="footer p-10 bg-secondary text-white">
         <div>
-          <span class="footer-title">Services</span>
-          <a class="link link-hover">Car Wash</a>
-          <a class="link link-hover">Car Repaire</a>
-          <a class="link link-hover">Body Repair</a>
-          <a class="link link-hover">Air conditioning system</a>
-          <a class="link link-hover">Accessories</a>
-          <a class="link link-hover">Service Maintenance Package</a>
+          <span class="footer-title">Products</span>
+          <a class="link link-hover">Gear Lever.</a>
+          <a class="link link-hover">Steering wheel.</a>
+          <a class="link link-hover">Windshield wipers.</a>
+          <a class="link link-hover">Engine</a>
+          <a class="link link-hover">Trunk</a>
+          <a class="link link-hover">Headlights</a>
         </div>
         <div>
-          <span class="footer-title">Company</span>
+          <a class="link link-hover">Speedometer</a>
+          <a class="link link-hover">WindScreen</a>
+          <a class="link link-hover">Battery</a>
+          <a class="link link-hover">Alternator</a>
+          <a class="link link-hover">Radiator</a>
+          <a class="link link-hover">Front Axle</a>
+          <a class="link link-hover">Brakes</a>
+        </div>
+        <div>
+          <span class="footer-title">All Time Car Parts</span>
           <a class="link link-hover">About us</a>
           <a class="link link-hover">Contact</a>
-          <a class="link link-hover">Jobs</a>
-          <a class="link link-hover">Press kit</a>
+          <a class="link link-hover">Reviwes</a>
+          <a class="link link-hover">Why chooce us</a>
         </div>
         <div>
           <span class="footer-title">Social</span>
@@ -59,9 +68,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        
       </footer>
-      <p className='bg-secondary text-white text-center py-4'>Copyright © 2022 - All right reserved by Eshrat jahan bonna</p>
+      <p className="bg-secondary text-white text-center py-4">
+        Copyright © 2022 - All right reserved by Eshrat jahan bonna
+      </p>
     </div>
   );
 };
