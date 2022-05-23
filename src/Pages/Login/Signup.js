@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Signup = () => {
   const {
@@ -12,6 +14,13 @@ const Signup = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  if (user ) {
+    console.log(user);
+  }
+  const handleSignIn=()=>{
+    signInWithGoogle();
+  }
   return (
     <div>
       <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">
@@ -75,17 +84,20 @@ const Signup = () => {
           <input
             type="submit"
             value="Sign Up"
-            className="btn w-1/2 flex justify-center ml-40 text-white bg-red-500  rounded-full  border-0  hover:bg-primary "
+            className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
           />
         </form>
         <p className="text-center font-semibold my-3">
           Already Have an account?
-          <Link to="/signup" className="text-secondary ">
+          <Link to="/login" className="text-secondary ">
             Log in
           </Link>
         </p>
         <div class="divider w-3/12 mx-auto">OR</div>
-        <button className="flex justify-center mx-auto hover:bg-primary bg-red-500 text-white rounded-full p-3">
+        <button
+          onClick={handleSignIn}
+          className="flex justify-center mx-auto hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  rounded-full p-3"
+        >
           Continue With Google
         </button>
       </div>

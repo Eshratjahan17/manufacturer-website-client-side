@@ -1,15 +1,48 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from '../../firebase.init';
 
 const Login = () => {
+//Hook-form
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {console.log(data);}
+  //navigation
+     const location = useLocation();
+     const navigate = useNavigate();
+    
+     const from = location?.state?.from?.pathname || "/";
+     //Google 
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  //Email password
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  if(loading){
+    <h1>Loading...</h1>
+  }
+  if (user || googleUser) {
+    console.log(user);
+  }
+  
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email,data.password)
+     .then(() =>{
+      navigate(from, { replace: true });
+    });
+   
+  }
+
+   const handleSignIn=()=> {
+     signInWithGoogle().then(() => {
+       navigate(from, { replace: true });
+     });
+   
+   };
   return (
     <div>
       <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">
@@ -26,15 +59,30 @@ const Login = () => {
               type="email"
               placeholder="Email here"
               class="input input-bordered w-full max-w-xs"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is reqiured",
+                },
+                pattern: {
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  message: "error message",
+                },
+              })}
             />
             <label class="label">
-              <span class="label-text-alt">
-                {errors.exampleRequired && <span>This field is required</span>}
-              </span>
+              {errors.email?.type === "required" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
             </label>
           </div>
-
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
               <span class="label-text">Password</span>
@@ -43,21 +91,36 @@ const Login = () => {
               type="password"
               placeholder="password here"
               class="input input-bordered w-full max-w-xs"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is reqiured",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Password must be more than 6 charecters",
+                },
+              })}
             />
             <label class="label">
-              <span class="label-text-alt">
-                {errors.exampleRequired && <span>This field is required</span>}
-              </span>
+              {errors.password?.type === "required" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
             </label>
           </div>
 
           {/* errors will return when field validation fails  */}
-
           <input
             type="submit"
             value="Log In"
-            className="btn w-1/2 flex justify-center ml-40 text-white bg-red-500  rounded-full  border-0  hover:bg-primary "
+            className="btn w-1/2 flex justify-center ml-40  rounded-full  border-0 hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
         </form>
         <p className="text-center font-semibold my-3">
@@ -67,7 +130,10 @@ const Login = () => {
           </Link>
         </p>
         <div class="divider w-3/12 mx-auto">OR</div>
-        <button className="flex justify-center mx-auto hover:bg-primary bg-red-500 text-white rounded-full p-3">
+        <button
+          onClick={handleSignIn}
+          className="flex justify-center mx-auto hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white rounded-full p-3"
+        >
           Continue With Google
         </button>
       </div>
