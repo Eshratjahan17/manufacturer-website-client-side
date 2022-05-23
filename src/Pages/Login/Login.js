@@ -12,6 +12,7 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+  let errorMessage;
   //navigation
      const location = useLocation();
      const navigate = useNavigate();
@@ -22,6 +23,13 @@ const Login = () => {
   //Email password
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+    //error
+    if (error || googleError) {
+      errorMessage = (
+        <p className="text-red-600">{error?.message || googleError?.message}</p>
+      );
+    }
+
   if(loading){
     <h1>Loading...</h1>
   }
@@ -115,13 +123,13 @@ const Login = () => {
               )}
             </label>
           </div>
-
           {/* errors will return when field validation fails  */}
           <input
             type="submit"
             value="Log In"
             className="btn w-1/2 flex justify-center ml-40  rounded-full  border-0 hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
+          {errorMessage}
         </form>
         <p className="text-center font-semibold my-3">
           Are You New Here?

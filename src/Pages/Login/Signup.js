@@ -22,6 +22,12 @@ const Signup = () => {
   if (googleUser||user) {
     console.log(user || googleUser);
   }
+  let signupError;
+  if(error || googleError){
+    signupError = (
+      <p className="text-red-600 text-center">{error?.message || googleError?.message}</p>
+    );
+  }
   const handleSignIn=()=>{
     signInWithGoogle();
   }
@@ -63,15 +69,30 @@ const Signup = () => {
               type="email"
               placeholder="Email here"
               class="input input-bordered w-full max-w-xs"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is reqiured",
+                },
+                pattern: {
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  message: "Please enter a valid email",
+                },
+              })}
             />
             <label class="label">
-              <span class="label-text-alt">
-                {errors.exampleRequired && <span>This field is required</span>}
-              </span>
+              {errors.email?.type === "required" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
             </label>
           </div>
-
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
               <span class="label-text">Password</span>
@@ -80,22 +101,36 @@ const Signup = () => {
               type="password"
               placeholder="password here"
               class="input input-bordered w-full max-w-xs"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is reqiured",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Password must be more than 6 charecters",
+                },
+              })}
             />
             <label class="label">
-              <span class="label-text-alt">
-                {errors.exampleRequired && <span>This field is required</span>}
-              </span>
+              {errors.password?.type === "required" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span class="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
             </label>
           </div>
-
-          {/* errors will return when field validation fails  */}
-
           <input
             type="submit"
             value="Sign Up"
             className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
           />
+          {signupError}
         </form>
         <p className="text-center font-semibold my-3">
           Already Have an account?
