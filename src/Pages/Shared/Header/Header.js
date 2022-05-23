@@ -53,7 +53,7 @@ const Header = () => {
               {navBar}
             </ul>
           </div>
-          <Link to="/home" class="btn btn-ghost normal-case text-xl">
+          <Link to="/home" class=" normal-case text-xl">
             <div className="grid justify-items-center">
               <img className="h-10 w-10" src={logo} alt="" />
               <p className="text-sm text-primary ">All Time Car Parts</p>
@@ -65,8 +65,8 @@ const Header = () => {
         </div>
         <div class="navbar-end">
           <Link
-            to="/log in"
-            class="btn bg-secondary text-white hover:bg-white hover:text-secondary"
+            to="/login"
+            class="btn bg-primary text-white hover:bg-white hover:text-primary border-0"
           >
             Log in
           </Link>
