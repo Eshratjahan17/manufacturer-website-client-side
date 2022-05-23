@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
 
 const Signup = () => {
@@ -11,16 +11,26 @@ const Signup = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  if (user ) {
-    console.log(user);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
+  
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  if (googleUser||user) {
+    console.log(user || googleUser);
   }
   const handleSignIn=()=>{
     signInWithGoogle();
   }
+  const onSubmit = (data) => {
+    createUserWithEmailAndPassword(data.email, data.password)
+    .then(() =>{
+      navigate(from, { replace: true });
+    });
+  };
   return (
     <div>
       <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">

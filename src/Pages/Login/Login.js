@@ -26,7 +26,7 @@ const Login = () => {
     <h1>Loading...</h1>
   }
   if (user || googleUser) {
-    console.log(user);
+    console.log(user || googleUser);
   }
   
   const onSubmit = (data) => {
