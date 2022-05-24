@@ -3,9 +3,10 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-fireba
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
-//Hook-form
+  //Hook-form
   const {
     register,
     handleSubmit,
@@ -14,43 +15,42 @@ const Login = () => {
   } = useForm();
   let errorMessage;
   //navigation
-     const location = useLocation();
-     const navigate = useNavigate();
-    
-     const from = location?.state?.from?.pathname || "/";
-     //Google 
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
+
+  //Google
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
   //Email password
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    //error
-    if (error || googleError) {
-      errorMessage = (
-        <p className="text-red-600">{error?.message || googleError?.message}</p>
-      );
-    }
-
-  if(loading){
-    <h1>Loading...</h1>
+  //error
+  if (error || googleError) {
+    errorMessage = (
+      <p className="text-red-600">{error?.message || googleError?.message}</p>
+    );
   }
-  if (user || googleUser) {
-    console.log(user || googleUser);
+  //jwtToken
+  const [token] = useToken(user || googleUser);
+  if (loading) {
+    <h1>Loading...</h1>;
   }
-  
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email,data.password)
-     .then(() =>{
-      navigate(from, { replace: true });
-    });
-   
+  if (token) {
+    navigate(from, { replace: true });
   }
 
-   const handleSignIn=()=> {
-     signInWithGoogle().then(() => {
-       navigate(from, { replace: true });
-     });
-   
-   };
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword(data.email, data.password);
+  };
+
+  const handleSignIn = async () => {
+    await signInWithGoogle();
+    //  .then(() => {
+    //    navigate(from, { replace: true });
+    //  });
+  };
   return (
     <div>
       <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 
 const Signup = () => {
   const {
@@ -19,23 +20,28 @@ const Signup = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  if (googleUser||user) {
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(googleUser || user);
+  if (token) {
+     navigate(from, { replace: true });
     console.log(user || googleUser);
   }
   let signupError;
-  if(error || googleError){
+  if (error || googleError || updateError) {
     signupError = (
-      <p className="text-red-600 text-center">{error?.message || googleError?.message}</p>
+      <p className="text-red-600 text-center">
+        {error?.message || googleError?.message || updateError?.message}
+      </p>
     );
   }
   const handleSignIn=()=>{
     signInWithGoogle();
   }
-  const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password)
-    .then(() =>{
-      navigate(from, { replace: true });
-    });
+  const onSubmit =async (data) => {
+    createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({displayName:data.name})
+     console.log("Updated");
   };
   return (
     <div>
