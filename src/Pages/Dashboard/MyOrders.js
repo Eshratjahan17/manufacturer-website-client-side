@@ -14,9 +14,40 @@ const MyOrders = () => {
     }
    
   },[user])
+  console.log(myOrders);
   return (
     <div>
       <h1>My orders:{myOrders.length}</h1>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Tools Name</th>
+              <th>Quantity</th>
+              <th>Payment</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myOrders.map((order,index) => (
+              <tr>
+                <th>{index+1}</th>
+                <td>{order.name}</td>
+                <td>{order.tools}</td>
+                <td>{order.quantity}</td>
+                <td>
+                  <button class="btn btn-secondary text-white">Payment</button>
+                </td>
+                <td>
+                  <button class="btn btn-sm">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
