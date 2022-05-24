@@ -61,6 +61,7 @@ const Header = () => {
               {navBar}
             </ul>
           </div>
+
           <Link to="/home" class=" normal-case text-xl">
             <div className="grid justify-items-center">
               <img className="h-10 w-10" src={logo} alt="" />
@@ -75,13 +76,11 @@ const Header = () => {
           {user ? (
             <div className="flex justify-center items-center ">
               <Link
-                to="/"
+                to="/dashboard"
                 class=" hover:bg-secondary text-secondary hover:text-white hover:rounded-md p-3 mr-2 font-semibold"
               >
                 DashBoard
               </Link>
-
-              <span class="text-xs font-bold mr-2">{user.displayName}</span>
 
               <Link
                 onClick={handleSignOut}
@@ -100,6 +99,28 @@ const Header = () => {
             </Link>
           )}
         </div>
+      </div>
+      <div className="navbar-end">
+        <label
+          tabIndex="1"
+          for="dashboard-drawer"
+          className="btn btn-ghost lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
       </div>
     </div>
   );
