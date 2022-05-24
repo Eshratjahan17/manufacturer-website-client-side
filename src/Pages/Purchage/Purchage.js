@@ -9,6 +9,7 @@ const Purchage = () => {
    let {id}=useParams();
    console.log(id);
    
+   
    const [toolDetails,setToolDetails]=useState([]);
    const [shippingDetails,setshippingDetails]=useState([]);
    useEffect(() => {
@@ -16,9 +17,9 @@ const Purchage = () => {
        .then((res) => res.json())
        .then((data) => setToolDetails(data));
    }, []);
-   const {minimum,available}=toolDetails;
-  let minValue= parseInt(minimum);
-  console.log(typeof(minValue));
+   const {minimum,available,_id}=toolDetails;
+   console.log(toolDetails);
+  
    const {
      register,
      handleSubmit,
@@ -26,11 +27,35 @@ const Purchage = () => {
      formState: { errors },
    } = useForm();
    const onSubmit = (data) => {
+
      setshippingDetails(data);
-     console.log(data.email,data.name,data.number);
+     const order = {
+       toolsId: _id,
+       name: data.name,
+       address: data.address,
+       email: user?.email,
+       phone: data.phone,
+       quantity: data.quantity,
+       tools: data.tools,
+     };
+     console.log(order);
+     fetch("http://localhost:5000/order", {
+       method: "POST",
+       headers: {
+         "content-type": "application/json",
+       },
+       body: JSON.stringify(order),
+     })
+       .then((res) => res.json())
+       .then((data) => 
+       {console.log(data);
+        
+      });
+     
    }; 
   console.log(shippingDetails);
-  const productQuantity=shippingDetails.number;
+  
+  
 
    
   
@@ -103,6 +128,7 @@ const Purchage = () => {
                     </span>
                   </label>
                 </div>
+                {/* address */}
                 <div class="form-control  mx-auto">
                   <label class="label">
                     <span class="label-text">Address </span>
@@ -156,6 +182,25 @@ const Purchage = () => {
                 </div>
                 <div class="form-control  mx-auto">
                   <label class="label">
+                    <span class="label-text">Product name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder=" Tools name here"
+                    class="input input-bordered w-full max-w-xs"
+                    {...register("tools")}
+                  />
+
+                  <label class="label">
+                    <span class="label-text-alt">
+                      {errors.exampleRequired && (
+                        <span>This field is required</span>
+                      )}
+                    </span>
+                  </label>
+                </div>
+                <div class="form-control  mx-auto">
+                  <label class="label">
                     <span class="label-text">Order Quantity</span>
                   </label>
                   {
@@ -163,7 +208,7 @@ const Purchage = () => {
                       type="number"
                       placeholder="order Quantity here"
                       class="input input-bordered w-full max-w-xs"
-                      {...register("number", {
+                      {...register("quantity", {
                         required: {
                           value: true,
                           message: "This field  is reqiured",
