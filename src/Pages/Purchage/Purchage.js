@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from "react-router-dom";
+import auth from '../../firebase.init';
 
 const Purchage = () => {
+  const [user, loading, error] = useAuthState(auth);
    let {id}=useParams();
    console.log(id);
    
    const [toolDetails,setToolDetails]=useState([]);
+   const [shippingDetails,setshippingDetails]=useState([]);
    useEffect(() => {
      fetch(`http://localhost:5000/tools/${id}`)
        .then((res) => res.json())
        .then((data) => setToolDetails(data));
    }, []);
-   const {minimum}=toolDetails;
-   console.log(minimum);
+   const {minimum,available}=toolDetails;
+  let minValue= parseInt(minimum);
+  console.log(typeof(minValue));
    const {
      register,
      handleSubmit,
@@ -21,30 +26,44 @@ const Purchage = () => {
      formState: { errors },
    } = useForm();
    const onSubmit = (data) => {
+     setshippingDetails(data);
      console.log(data.email,data.name,data.number);
    }; 
-  
+  console.log(shippingDetails);
+  const productQuantity=shippingDetails.number;
+
    
   
    
   
   return (
-    <div>
-      <div class="hero min-h-screen bg-base-200">
+    <div className=" bg-slate-400">
+      <div class="hero  min-h-screen bg-base-200">
         <div class="hero-content grid grid-cols-2 ">
           <div class="text-center lg:text-left basis-1/4">
-            <h1 class="text-5xl font-bold">{toolDetails.name}</h1>
+            {/* user Info */}
+            <div className="mb-9">
+              <div class="avatar placeholder justify-start ">
+                <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
+                  <span class="text-xl text-center">{user.displayName}</span>
+                </div>
+              </div>
+              <p>{user.email}</p>
+            </div>
+            {/* user Info */}
+
+            <h1 class="text-5xl font-bold ">{toolDetails.name}</h1>
             <p class="py-6">
-              <p class="py-6">{toolDetails.about}</p>
+              <p class="">{toolDetails.about}</p>
               Price: {toolDetails.Price}
             </p>
-            <p class="py-6">Available: {toolDetails.available}</p>
-            <p class="py-6">Minimum-Order: {toolDetails.minimum}</p>
+            <p class="">Available: {toolDetails.available}</p>
+            <p class="">Minimum-Order: {toolDetails.minimum}</p>
           </div>
           <div class="card grow  w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
               <form onSubmit={handleSubmit(onSubmit)} className=" mx-auto ">
-                {/* register your input into the hook by invoking the "register" function */}
+                {/* Name */}
                 <div class="form-control  mx-auto">
                   <label class="label">
                     <span class="label-text">Name</span>
@@ -55,6 +74,46 @@ const Purchage = () => {
                     class="input input-bordered w-full max-w-xs"
                     {...register("name")}
                   />
+
+                  <label class="label">
+                    <span class="label-text-alt">
+                      {errors.exampleRequired && (
+                        <span>This field is required</span>
+                      )}
+                    </span>
+                  </label>
+                </div>
+                {/* Phone */}
+                <div class="form-control  mx-auto">
+                  <label class="label">
+                    <span class="label-text">Phone Number</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Your Phone here"
+                    class="input input-bordered w-full max-w-xs"
+                    {...register("phone")}
+                  />
+
+                  <label class="label">
+                    <span class="label-text-alt">
+                      {errors.exampleRequired && (
+                        <span>This field is required</span>
+                      )}
+                    </span>
+                  </label>
+                </div>
+                <div class="form-control  mx-auto">
+                  <label class="label">
+                    <span class="label-text">Address </span>
+                  </label>
+                  <textarea
+                    type="address"
+                    placeholder="Your Name here"
+                    class="input input-bordered w-full max-w-xs"
+                    {...register("address")}
+                  />
+
                   <label class="label">
                     <span class="label-text-alt">
                       {errors.exampleRequired && (
@@ -99,21 +158,23 @@ const Purchage = () => {
                   <label class="label">
                     <span class="label-text">Order Quantity</span>
                   </label>
-                  <input
-                    type="number"
-                    placeholder="order Quantity here"
-                    class="input input-bordered w-full max-w-xs"
-                    {...register("number", {
-                      required: {
-                        value: true,
-                        message: "This field  is reqiured",
-                      },
-                      minLength: {
-                        value: {minimum},
-                        message: "Password must be more than 6 charecters",
-                      },
-                    })}
-                  />
+                  {
+                    <input
+                      type="number"
+                      placeholder="order Quantity here"
+                      class="input input-bordered w-full max-w-xs"
+                      {...register("number", {
+                        required: {
+                          value: true,
+                          message: "This field  is reqiured",
+                        },
+                        // min: {
+                        //   value:minValue, //{minimum}
+                        //   message: "minimum value is 10",
+                        // },
+                      })}
+                    />
+                  }
                   <label class="label">
                     {errors.number?.type === "required" && (
                       <span class="label-text-alt text-red-500">
