@@ -1,21 +1,22 @@
 import { Route, Routes } from 'react-router';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 import Blogs from './Pages/Blogs/Blogs';
+import AddAReview from "./Pages/Dashboard/AddAReview";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import ManageUsers from './Pages/Dashboard/ManageUsers';
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import RequireAuth from './Pages/Login/RequireAuth';
 import Signup from './Pages/Login/Signup';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import NotFound from './Pages/NotFound/NotFound';
 import Purchage from './Pages/Purchage/Purchage';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
-import { ToastContainer} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import RequireAuth from './Pages/Login/RequireAuth';
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import MyOrders from "./Pages/Dashboard/MyOrders";
-import MyProfile from "./Pages/Dashboard/MyProfile";
-import AddAReview from "./Pages/Dashboard/AddAReview";
 
 function App() {
   return (
@@ -38,14 +39,20 @@ function App() {
             </RequireAuth>
           }
         ></Route>
-        <Route path="dashboard"element={<RequireAuth><Dashboard></Dashboard></RequireAuth>
+        <Route
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
           }
         >
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddAReview></AddAReview>}></Route>
           <Route path="myProfile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="manageUsers" element={<ManageUsers></ManageUsers>}></Route>
         </Route>
-       
+
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
