@@ -13,14 +13,15 @@ const AddAReview = () => {
      const email=data.email;
      const review = data.review;
      const ratings = data.ratings;
-     const userReview={name,email,review,ratings};
+     const image = data.image;
+     const userReview = { name, email, review, ratings, image };
      console.log(userReview);
      fetch("http://localhost:5000/addreview", {
        method: "POST",
        body: JSON.stringify(userReview),
        headers: {
          "content-type": "application/json",
-         authorization: `Bearer ${localStorage.getItem(`accessToken`)}`,
+         
        },
      })
        .then((res) => res.json())
@@ -90,9 +91,9 @@ const AddAReview = () => {
             })}
           />
           <label class="label">
-            {errors.phone?.type === "required" && (
+            {errors.review?.type === "required" && (
               <span class="label-text-alt text-red-500">
-                {errors.phone.message}
+                {errors.review.message}
               </span>
             )}
           </label>
@@ -103,7 +104,7 @@ const AddAReview = () => {
           </label>
           <input
             type="number"
-            placeholder="Ratings here"
+            placeholder="Rate our Service Out of 5"
             class="input input-bordered w-full max-w-xs"
             {...register("ratings", {
               required: {
@@ -113,14 +114,36 @@ const AddAReview = () => {
             })}
           />
           <label class="label">
-            {errors.address?.type === "required" && (
+            {errors.ratings?.type === "required" && (
               <span class="label-text-alt text-red-500">
-                {errors.address.message}
+                {errors.ratings.message}
               </span>
             )}
           </label>
         </div>
-       
+        <div class="form-control w-1/2 mx-auto">
+          <label class="label">
+            <span class="label-text">Your Avatar link</span>
+          </label>
+          <input
+            type="url"
+            placeholder="image link here"
+            class="input input-bordered w-full max-w-xs"
+            {...register("image", {
+              required: {
+                value: true,
+                message: "Field is reqiured",
+              },
+            })}
+          />
+          <label class="label">
+            {errors.image?.type === "required" && (
+              <span class="label-text-alt text-red-500">
+                {errors.image.message}
+              </span>
+            )}
+          </label>
+        </div>
 
         <input
           type="submit"
