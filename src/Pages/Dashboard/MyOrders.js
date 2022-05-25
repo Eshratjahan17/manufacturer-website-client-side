@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
@@ -43,14 +44,18 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((order,index) => (
+            {myOrders.map((order, index) => (
               <tr>
-                <th>{index+1}</th>
+                <th>{index + 1}</th>
                 <td>{order.name}</td>
                 <td>{order.tools}</td>
                 <td>{order.quantity}</td>
                 <td>
-                  <button class="btn btn-secondary text-white">Payment</button>
+                  <Link to={`/dashboard/payment/${order._id}`}>
+                    <button class="btn btn-secondary text-white">
+                      Payment
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button class="btn btn-sm">Delete</button>

@@ -3,13 +3,14 @@ import Review from './Review';
 
 const Reviwes = () => {
   const [reviews,setReviews]=useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:5000/addreview")
-    .then(res=>res.json())
-    .then(data=>{
-      setReviews(data);
-      console.log(data)})
-  },[])
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+        console.log(data);
+      });
+  }, [reviews]);
   return (
     <div>
       <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">

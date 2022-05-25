@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddAReview = () => {
    const {
@@ -11,10 +12,10 @@ const AddAReview = () => {
    const onSubmit = (data) => {
      const name=data.name;
      const email=data.email;
-     const review = data.review;
+     const about = data.review;
      const ratings = data.ratings;
-     const image = data.image;
-     const userReview = { name, email, review, ratings, image };
+     const picture = data.image;
+     const userReview = { name, email, about, ratings, picture };
      console.log(userReview);
      fetch("http://localhost:5000/addreview", {
        method: "POST",
@@ -25,7 +26,9 @@ const AddAReview = () => {
        },
      })
        .then((res) => res.json())
-       .then((data) => console.log(data));
+       .then((data) => {
+         toast('Review added');
+         console.log(data)});
    }
   return (
     <div>

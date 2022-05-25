@@ -5,7 +5,7 @@ import Tool from './Tool';
 
 const Products = () => {
   const [tools, isLoading] = useData();
- console.log(tools);
+//  console.log(tools);
  if(isLoading){
    return <Loading></Loading>
  }

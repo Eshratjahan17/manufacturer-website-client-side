@@ -3,11 +3,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 import Blogs from './Pages/Blogs/Blogs';
+import AddAProduct from "./Pages/Dashboard/AddAProduct";
 import AddAReview from "./Pages/Dashboard/AddAReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from './Pages/Dashboard/Payment';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth';
@@ -17,7 +19,6 @@ import NotFound from './Pages/NotFound/NotFound';
 import Purchage from './Pages/Purchage/Purchage';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
-import AddAProduct from "./Pages/Dashboard/AddAProduct";
 
 function App() {
   return (
@@ -58,6 +59,10 @@ function App() {
           <Route
             path="addProduct"
             element={<AddAProduct></AddAProduct>}
+          ></Route>
+          <Route
+            path="dashboard/payment/:id"
+            element={<Payment></Payment>}
           ></Route>
         </Route>
 
