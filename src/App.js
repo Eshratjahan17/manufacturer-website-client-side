@@ -17,6 +17,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Purchage from './Pages/Purchage/Purchage';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
+import AddAProduct from "./Pages/Dashboard/AddAProduct";
 
 function App() {
   return (
@@ -50,7 +51,14 @@ function App() {
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddAReview></AddAReview>}></Route>
           <Route path="myProfile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="manageUsers" element={<ManageUsers></ManageUsers>}></Route>
+          <Route
+            path="manageUsers"
+            element={<ManageUsers></ManageUsers>}
+          ></Route>
+          <Route
+            path="addProduct"
+            element={<AddAProduct></AddAProduct>}
+          ></Route>
         </Route>
 
         <Route path="/login" element={<Login></Login>}></Route>

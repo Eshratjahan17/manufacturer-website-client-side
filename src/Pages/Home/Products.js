@@ -1,10 +1,14 @@
 import React from 'react';
 import useData from '../../Hooks/useData';
+import Loading from '../Shared/Loading/Loading';
 import Tool from './Tool';
 
 const Products = () => {
-  const [tools] = useData();
-  const homeTools = tools.slice(0, 6).reverse();
+  const [tools, isLoading] = useData();
+ console.log(tools);
+ if(isLoading){
+   return <Loading></Loading>
+ }
   
   
   return (
@@ -14,7 +18,7 @@ const Products = () => {
       </h1>
       <div class="divider w-1/4 mx-auto "></div>
       <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-3 place-content-center pr-2 pl-5  ">
-        {homeTools.map((tool) => (
+        {tools.map((tool) => (
           <Tool tool={tool}></Tool>
         ))}
       </div>

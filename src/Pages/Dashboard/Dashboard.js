@@ -22,9 +22,15 @@ const Dashboard = () => {
           <ul class="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             {!admin && (
-              <li>
-                <Link to="/dashboard">My orders</Link>
-              </li>
+              <>
+                <li>
+                  <Link to="/dashboard">My orders</Link>
+                </li>
+
+                <li>
+                  <Link to="/dashboard/addReview">Add A Review</Link>
+                </li>
+              </>
             )}
 
             {admin && (
@@ -32,11 +38,11 @@ const Dashboard = () => {
                 <li>
                   <Link to="/dashboard/manageUsers">Manage Users</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/addProduct">Add Product</Link>
+                </li>
               </>
             )}
-            <li>
-              <Link to="/dashboard/addReview">Add A Review</Link>
-            </li>
 
             <li>
               <Link to="/dashboard/myProfile">My Profile</Link>

@@ -11,7 +11,7 @@ const Tool = ({tool}) => {
   }
   return (
     <div>
-      <div class="card w-96 bg-secondary shadow-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="card w-96 h-full my-7 bg-secondary shadow-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">
         <figure>
           <img src={picture} alt="Shoes" />
         </figure>
@@ -31,7 +31,7 @@ const Tool = ({tool}) => {
           </div>
           <div className=" flex justify-center">
             <button
-            onClick={()=>handletools(_id)}
+              onClick={() => handletools(_id)}
               to="/purchage"
               class="btn bg-primary text-white hover:bg-white hover:text-primary rounded-full mt-5"
             >
