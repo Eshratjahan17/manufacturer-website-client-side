@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
 import useToken from '../../Hooks/useToken';
+import Loading from "../Shared/Loading/Loading";
 
 const Login = () => {
   //Hook-form
@@ -34,8 +35,8 @@ const Login = () => {
   }
   //jwtToken
   const [token] = useToken(user || googleUser);
-  if (loading) {
-    <h1>Loading...</h1>;
+  if (loading || googleLoading) {
+    return <Loading></Loading>;
   }
   if (token) {
     navigate(from, { replace: true });

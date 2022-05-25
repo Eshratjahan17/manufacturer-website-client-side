@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Reviwes = () => {
+  const [reviews,setReviews]=useState([]);
+  useEffect(()=>{
+    fetch("http://localhost:5000/addreview")
+    .then(res=>res.json())
+    .then(data=>{
+      setReviews(data);
+      console.log(data)})
+  },[])
   return (
     <div>
       <div
@@ -14,7 +22,7 @@ const Reviwes = () => {
             </div>
           </div>
           <div class="card-body mt-7">
-            <h2 class="card-title text-secondary">Customer Name</h2>
+            <h2 class="card-title text-secondary">{reviews.length}</h2>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
               culpa consequuntur voluptatibus voluptas dicta?
