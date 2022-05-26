@@ -1,4 +1,5 @@
 import React from 'react';
+import About from './About';
 import BusinessSummury from './BusinessSummury';
 import Products from './Products';
 import Reviwes from './Reviwes';
@@ -10,9 +11,8 @@ const Body = () => {
   return (
     <div>
      
-        <Products ></Products>
-      
-
+     <About></About>
+     <Products ></Products>
       <Reviwes></Reviwes>
       <BusinessSummury></BusinessSummury>
     </div>

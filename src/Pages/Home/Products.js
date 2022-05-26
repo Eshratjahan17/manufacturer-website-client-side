@@ -20,6 +20,7 @@ const Products = () => {
       <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-3 place-content-center pr-2 pl-5  ">
         {tools.map((tool) => (
           <Tool tool={tool}></Tool>
+          
         ))}
       </div>
     </div>
