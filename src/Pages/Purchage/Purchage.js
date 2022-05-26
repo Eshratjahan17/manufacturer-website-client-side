@@ -17,7 +17,7 @@ const Purchage = () => {
        .then((res) => res.json())
        .then((data) => setToolDetails(data));
    }, []);
-   const {minimum,available,_id}=toolDetails;
+   const {minimum,available,_id,price}=toolDetails;
    console.log(toolDetails);
   
    const {
@@ -37,6 +37,7 @@ const Purchage = () => {
        phone: data.phone,
        quantity: data.quantity,
        tools: data.tools,
+       price:data.price
      };
      console.log(order);
      fetch("http://localhost:5000/order", {
@@ -54,13 +55,7 @@ const Purchage = () => {
      
    }; 
   console.log(shippingDetails);
-  
-  
-
-   
-  
-   
-  
+ 
   return (
     <div className=" bg-slate-400">
       <div class="hero  min-h-screen bg-base-200">
@@ -80,7 +75,7 @@ const Purchage = () => {
             <h1 class="text-5xl font-bold ">{toolDetails.name}</h1>
             <p class="py-6">
               <p class="">{toolDetails.about}</p>
-              Price: {toolDetails.Price}
+              Price: {toolDetails.price}
             </p>
             <p class="">Available: {toolDetails.available}</p>
             <p class="">Minimum-Order: {toolDetails.minimum}</p>
@@ -233,12 +228,47 @@ const Purchage = () => {
                     )}
                   </label>
                 </div>
-
-                <input
-                  type="submit"
-                  value="Go to Checkout"
-                  className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
-                />
+                <div class="form-control  mx-auto">
+                  <label class="label">
+                    <span class="label-text">Price</span>
+                  </label>
+                  {
+                    <input
+                      type="number"
+                      placeholder="Price here"
+                      class="input input-bordered w-full max-w-xs"
+                      {...register("price", {
+                        required: {
+                          value: true,
+                          message: "This field  is reqiured",
+                        },
+                        // min: {
+                        //   value:minValue, //{minimum}
+                        //   message: "minimum value is 10",
+                        // },
+                      })}
+                    />
+                  }
+                  <label class="label">
+                    {errors.price?.type === "required" && (
+                      <span class="label-text-alt text-red-500">
+                        {errors.price.message}
+                      </span>
+                    )}
+                    {errors.price?.type === "min" && (
+                      <span class="label-text-alt text-red-500">
+                        {errors.price.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+               
+                  <input
+                    type="submit"
+                    value="Go to Checkout"
+                    className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
+                  />
+                
               </form>
             </div>
           </div>

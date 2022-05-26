@@ -3,31 +3,51 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import OrderDelete from './OrderDelete';
 
 const MyOrders = () => {
-  const[user]=useAuthState(auth);
-  const [myOrders,setMyOrders]=useState([]);
-  const navigate=useNavigate();
+  const [user] = useAuthState(auth);
+  const [myOrders, setMyOrders] = useState([]);
+  
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(user){
-       fetch(`http://localhost:5000/order?email=${user.email}`,{
-         method:'GET',
-         headers:{
-           'authorization':`Bearer ${localStorage.getItem('accessToken')}`
-         }
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/order?email=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+          console.log("response", res);
+          if (res.status === 401 || res.status === 403) {
+            navigate("/");
+          }
+          return res.json();
+        })
+        .then((data) => setMyOrders(data));
+    }
+  }, [user]);
+  console.log(myOrders);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    const proceed = window.confirm("Are You sure?");
+    if(proceed){
+       fetch(`http://localhost:5000/order/${id}`, {
+         method: "DELETE",
        })
-    .then(res=>{
-      console.log("response",res)
-      if(res.status === 401 || res.status === 403){
-        navigate('/');
-      }
-     return res.json()})
-    .then(data=>setMyOrders(data));
+         .then((res) => {
+           res.json();
+         })
+         .then((data) => {console.log("deleted"); }
+           
+         );
+
     }
    
-  },[user])
-  console.log(myOrders);
+  };
   return (
     <div>
       <h1>My orders:{myOrders.length}</h1>
@@ -57,9 +77,11 @@ const MyOrders = () => {
                     </button>
                   </Link>
                 </td>
-                <td>
-                  <button class="btn btn-sm">Delete</button>
-                </td>
+
+                <OrderDelete
+                  order={order}
+                  handleDelete={handleDelete}
+                ></OrderDelete>
               </tr>
             ))}
           </tbody>

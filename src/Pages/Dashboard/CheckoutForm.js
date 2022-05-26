@@ -1,10 +1,13 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({order}) => {
+  console.log(order);
+   
   const [cardError, setCardError] = useState();
-  const stripe = useStripe();
-  const elements = useElements();
+ 
+ const stripe = useStripe();
+ const elements = useElements();
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -23,7 +26,7 @@ const CheckoutForm = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {
