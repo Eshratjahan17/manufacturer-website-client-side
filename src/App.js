@@ -41,6 +41,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/payment/:id" element={<Payment></Payment>}></Route>
         <Route
           path="dashboard"
           element={
@@ -60,10 +61,7 @@ function App() {
             path="addProduct"
             element={<AddAProduct></AddAProduct>}
           ></Route>
-          <Route
-            path="dashboard/payment/:id"
-            element={<Payment></Payment>}
-          ></Route>
+         
         </Route>
 
         <Route path="/login" element={<Login></Login>}></Route>
