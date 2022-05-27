@@ -21,7 +21,7 @@ const ManageUsers = () => {
             <tr>
               <th></th>
               <th>Id</th>
-              <th>Email</th>
+              
               <th>Make Admin</th>
             </tr>
           </thead>

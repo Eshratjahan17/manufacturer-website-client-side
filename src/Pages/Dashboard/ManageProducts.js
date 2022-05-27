@@ -11,7 +11,7 @@ const ManageProducts = () => {
     <div>
       <h1>manage Products</h1>
       <div class="overflow-x-auto">
-        <table class="table w-full">
+        <table class="table lg:w-full sm:w-1/2">
           <thead>
             <tr>
               <th></th>

@@ -21,16 +21,12 @@ const DeleteModal = ({ deleteModal, isLoading, setDeleteModal }) => {
       });
   };
   return (
-    <div>
+    <div className="">
       <input type="checkbox" id="delete-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal modal-bottom sm:modal-middle bg-white bg-transparent">
         <div class="modal-box">
-          <h3 class="font-bold text-lg">Are You sure to delete {name}</h3>
-          <p class="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-          <div class="modal-action">
+          <h3 class="font-bold text-lg">Are You sure to delete {name} ?</h3>
+          <div class="modal-action ">
             <button
               onClick={() => handleDelete(deleteModal._id)}
               class="btn btn-sm btn-primary text-white"

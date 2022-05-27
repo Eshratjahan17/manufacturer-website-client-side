@@ -58,9 +58,10 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="addReview" element={<AddAReview></AddAReview>}></Route>
-          <Route path="myProfile" element={<MyProfile></MyProfile>}></Route>
+          
+          <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
           <Route
             path="manageUsers"
             element={<ManageUsers></ManageUsers>}

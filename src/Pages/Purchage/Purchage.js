@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const Purchage = () => {
    
   const [user, loading, error] = useAuthState(auth);
-  const [quantityError,setquantityError]=useState(false);
+ 
   const [toolDetails,setToolDetails]=useState([]);
- const [shippingDetails,setshippingDetails]=useState([]);
+ 
    let { id } = useParams();
    useEffect(() => {
      fetch(`http://localhost:5000/tools/${id}`)
@@ -17,26 +18,15 @@ const Purchage = () => {
        .then((data) => setToolDetails(data));
    }, []);
    const {minimum,available,_id,price}=toolDetails;
-   const minValue=parseInt(minimum);
-  //  const preloaded = {
-  //    quantity: "12"
-  //  };
-  //  console.log(preloaded);
- 
+
    const {
      register,
      handleSubmit,
-     watch,
-    
-
-
-     formState: { errors },
+     reset,
+   formState: { errors },
    } = useForm({});
-  const getInputValue=(event)=>{
-    const quantity = event.target.value;
-    console.log(quantity);
-
-  }
+   const [shippingDetails, setshippingDetails] = useState([reset]);
+  
    const onSubmit = (data) => {
      console.log(data,errors);
 
@@ -63,6 +53,19 @@ const Purchage = () => {
        .then((data) => 
        {
          console.log(data);
+        
+        if(data.acknowledged){
+          toast.success("To checkOut Please go to Payment Page ");
+           reset({
+             name: " ",
+             phone: " ",
+             address: " ",
+             email: " ",
+             productName: " ",
+           });
+          
+
+        }
         
       });
       
@@ -172,7 +175,6 @@ const Purchage = () => {
                   <input
                     name="quantity"
                     type="number"
-                    onBlur={getInputValue}
                     class="input input-bordered w-full max-w-xs"
                     defaultValue={toolDetails.minimum}
                     {...register("quantity", {

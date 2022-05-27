@@ -28,7 +28,7 @@ const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
   return (
     <div>
       <input type="checkbox" id="order-delete-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal modal-bottom sm:modal-middle bg-white bg-transparent">
         <div class="modal-box">
           <h3 class="font-bold text-lg">
             Are You sure to delete {deleteOrder.tools}?

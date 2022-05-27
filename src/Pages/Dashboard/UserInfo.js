@@ -27,7 +27,7 @@ const UserInfo = ({ user, index, refetch }) => {
     <tr>
       <th>{index + 1}</th>
       <td>{_id}</td>
-      <td>{email}</td>
+      
       <td>
         {role !== "admin" ? (
           <button
