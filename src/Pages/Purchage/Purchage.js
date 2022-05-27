@@ -32,7 +32,11 @@ const Purchage = () => {
 
      formState: { errors },
    } = useForm({});
-  
+  const getInputValue=(event)=>{
+    const quantity = event.target.value;
+    console.log(quantity);
+
+  }
    const onSubmit = (data) => {
      console.log(data,errors);
 
@@ -166,18 +170,30 @@ const Purchage = () => {
                     <span class="label-text">Quantity</span>
                   </label>
                   <input
+                    name="quantity"
                     type="number"
+                    onBlur={getInputValue}
                     class="input input-bordered w-full max-w-xs"
                     defaultValue={toolDetails.minimum}
                     {...register("quantity", {
-                      max: available,
-                      min: minimum,
-                       })}
+                      max: { value: available, message: "Stock Out" },
+                      min: {
+                        value: minimum,
+                        message: `You Can not order less then ${minimum}`,
+                      },
+                    })}
                   />
                   <label class="label">
-                   {
-                     
-                   }
+                    {errors.quantity?.type === "max" && (
+                      <span class="label-text-alt text-red-500">
+                        {errors.quantity.message}
+                      </span>
+                    )}
+                    {errors.quantity?.type === "min" && (
+                      <span class="label-text-alt text-red-500">
+                        {errors.quantity.message}
+                      </span>
+                    )}
                   </label>
                 </div>
 
