@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import OrderDelete from './OrderDelete';
+import OrdersDeleteModal from './OrdersDeleteModal';
+     
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
   const [myOrders, setMyOrders] = useState([]);
+  const [deleteOrder,setDeleteOrder]=useState(null);
   
   const navigate = useNavigate();
 
@@ -31,23 +34,7 @@ const MyOrders = () => {
   }, [user]);
   console.log(myOrders);
 
-  const handleDelete = (id) => {
-    console.log(id);
-    const proceed = window.confirm("Are You sure?");
-    if(proceed){
-       fetch(`http://localhost:5000/order/${id}`, {
-         method: "DELETE",
-       })
-         .then((res) => {
-           res.json();
-         })
-         .then((data) => {console.log("deleted"); }
-           
-         );
-
-    }
-   
-  };
+  
   return (
     <div>
       <h1>My orders:{myOrders.length}</h1>
@@ -80,13 +67,22 @@ const MyOrders = () => {
 
                 <OrderDelete
                   order={order}
-                  handleDelete={handleDelete}
+                  
+                  setDeleteOrder={setDeleteOrder}
+                  deleteOrder={deleteOrder}
+                  
                 ></OrderDelete>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {deleteOrder && (
+        <OrdersDeleteModal
+          setDeleteOrder={setDeleteOrder}
+          deleteOrder={deleteOrder}
+        ></OrdersDeleteModal>
+      )}
     </div>
   );
 };

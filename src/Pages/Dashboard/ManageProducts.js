@@ -45,6 +45,7 @@ const ManageProducts = () => {
           setDeleteModal={setDeleteModal}
           deleteModal={deleteModal}
           isLoading={isLoading}
+          hand
         ></DeleteModal>
       )}
     </div>

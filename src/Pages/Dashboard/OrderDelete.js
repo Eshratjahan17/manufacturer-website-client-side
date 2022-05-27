@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import Loading from '../Shared/Loading/Loading';
+import React from 'react';
 
-const OrderDelete = ({ order, handleDelete }) => {
-  const [isLoading,setIsLoading]=useState(false);
-  if(isLoading){
-    return<Loading></Loading>
-  }
+const OrderDelete = ({ order,  setDeleteOrder }) => {
+  
+  
   const { _id } = order;
   return (
     <div>
       <td>
-        <button onClick={()=>handleDelete(_id)} class="btn btn-sm">
+        
+        <label
+          onClick={setDeleteOrder(order)}
+          for="order-delete-modal"
+          class="btn modal-button btn-sm btn-primary text-white"
+        >
           Delete
-        </button>
+        </label>
       </td>
     </div>
   );
