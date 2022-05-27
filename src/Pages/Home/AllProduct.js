@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 const AllProduct = ({tool}) => {
+  console.log(tool);
   const navigate = useNavigate();
   const {_id,picture,name,about,price,minimum,available}=tool;
-  const handletools = (id) => {
+  const handleAllTools = (id) => {
     console.log(id);
     navigate(`/tools/${id}`);
   };
@@ -30,7 +31,7 @@ const AllProduct = ({tool}) => {
           </div>
           <div className=" flex justify-center">
             <button
-              onClick={() => handletools(_id)}
+              onClick={() => handleAllTools(_id)}
               to="/purchage"
               class="btn bg-primary text-white hover:bg-white hover:text-primary rounded-full mt-5"
             >

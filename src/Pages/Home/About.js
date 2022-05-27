@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
-    <div>
+    <div >
       <div class="hero min-h-screen bg-base-200  ">
         <div class="hero-content flex-col lg:flex-row w-5/6  ">
           <img
@@ -11,7 +11,7 @@ const About = () => {
             class="max-w-sm rounded-lg shadow-2xl"
           />
 
-          <div className="ml-2">
+          <div className="ml-2 ">
             <h1 class="text-5xl font-bold">Best Solution With Us!</h1>
             <p class="py-6">
               automotive industry, all those companies and activities involved
@@ -20,9 +20,7 @@ const About = () => {
               fuel.
             </p>
             <Link to="/allProducts">
-              <button class="btn btn-primary">
-                Get Started With Our Products
-              </button>
+              <button class="btn btn-primary text-white">Get Started</button>
             </Link>
           </div>
         </div>

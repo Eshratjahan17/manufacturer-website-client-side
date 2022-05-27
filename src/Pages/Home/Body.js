@@ -3,6 +3,8 @@ import About from './About';
 import BusinessSummury from './BusinessSummury';
 import Products from './Products';
 import Reviwes from './Reviwes';
+import WorkFlow from './WorkFlow';
+
 
 const Body = () => {
   
@@ -14,6 +16,7 @@ const Body = () => {
      <About></About>
      <Products ></Products>
       <Reviwes></Reviwes>
+     <WorkFlow></WorkFlow>
       <BusinessSummury></BusinessSummury>
     </div>
   );

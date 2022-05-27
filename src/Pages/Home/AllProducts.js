@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../Shared/Loading/Loading';
 import AllProduct from './AllProduct';
 const AllProducts = () => {
-  const [data,setData]=useState([]);
+  const [Alldata,setAllData]=useState([]);
   const [isLoading, setisLoading] = useState([]);
   useEffect(()=>{
     fetch("http://localhost:5000/addProduct")
-    .then(res=>res.json())
-    .then(data=>setData(data))
+      .then((res) => res.json())
+      .then((data) => setAllData(data));
   },[])
-  if(isLoading){
-    return <Loading></Loading>
-  }
+  
   
   return (
     <div className="my-9">
@@ -20,7 +17,7 @@ const AllProducts = () => {
       </h1>
       <div class="divider w-1/4 mx-auto "></div>
       <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-3 place-content-center pr-2 pl-5  ">
-        {data.map((tool) => (
+        {Alldata.map((tool) => (
           <AllProduct tool={tool}></AllProduct>
         ))}
       </div>

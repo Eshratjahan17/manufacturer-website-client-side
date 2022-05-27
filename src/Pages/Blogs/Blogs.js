@@ -3,12 +3,12 @@ import React from 'react';
 const Blogs = () => {
   return (
     <div className="grid lg:grid-cols-3 sm:grid-cols-1 mx-5 gap-4">
-      <div class="card w-96 bg-neutral text-neutral-content">
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">
+      <div class="card w-96 bg-base-200 ">
+        <div class="card-body items-center text-center ">
+          <h2 class="card-title text-secondary">
             How To improve performance of react application?
           </h2>
-          <p>
+          <p className="">
             <ol>
               <li>Using Immutable Data Structures</li>
               <li>Keeping component state local where necessary</li>
@@ -20,9 +20,9 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div class="card w-96 bg-neutral text-neutral-content">
+      <div class="card w-96 bg-base-200 ">
         <div class="card-body items-center text-center">
-          <h2 class="card-title">
+          <h2 class="card-title text-secondary">
             what are the diffrent ways to manage a state in a react application?
           </h2>
           <p>
@@ -37,9 +37,11 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div class="card w-96 bg-neutral text-neutral-content">
+      <div class="card w-96 bg-base-200 ">
         <div class="card-body items-center text-center">
-          <h2 class="card-title">How does prototypical inheritance work?</h2>
+          <h2 class="card-title text-secondary">
+            How does prototypical inheritance work?
+          </h2>
           <p>
             prototypical inheritance refers to the ability to access object
             properties from another object. We use a JavaScript prototype to add
@@ -49,9 +51,9 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div class="card w-96 bg-neutral text-neutral-content">
+      <div class="card w-96 bg-base-200 ">
         <div class="card-body items-center text-center">
-          <h2 class="card-title">
+          <h2 class="card-title text-secondary">
             You have an array of products. Each product has a name, price,
             description, etc. How will you implement a search to find products
             by name?
@@ -62,9 +64,9 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div class="card w-96 bg-neutral text-neutral-content">
+      <div class="card w-96 bg-base-200 ">
         <div class="card-body items-center text-center">
-          <h2 class="card-title">
+          <h2 class="card-title text-secondary">
             What is a unit test? Why should write unit tests?
           </h2>
           <p>
