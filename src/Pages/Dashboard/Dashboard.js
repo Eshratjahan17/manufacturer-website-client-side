@@ -8,6 +8,7 @@ import useAdmin from '../../Hooks/useAdmin';
 const Dashboard = () => {
   const [user]=useAuthState(auth);
   const [admin]=useAdmin(user);
+ 
   return (
     <div>
       <div class="drawer drawer-mobile">
@@ -21,7 +22,7 @@ const Dashboard = () => {
           <label for="dashboard-drawer" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
-            
+           
             {!admin && (
               <>
                 <li>
@@ -41,6 +42,12 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/addProduct">Add Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageOrders">Manage All Orders</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageProduct">Manage Product</Link>
                 </li>
               </>
             )}

@@ -6,6 +6,8 @@ import Blogs from './Pages/Blogs/Blogs';
 import AddAProduct from "./Pages/Dashboard/AddAProduct";
 import AddAReview from "./Pages/Dashboard/AddAReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 import ManageUsers from './Pages/Dashboard/ManageUsers';
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
@@ -30,8 +32,11 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-        <Route path="/allProducts" element={<AllProducts></AllProducts>}></Route>
-       
+        <Route
+          path="/allProducts"
+          element={<AllProducts></AllProducts>}
+        ></Route>
+
         <Route
           path="/myportfolio"
           element={<MyPortfolio></MyPortfolio>}
@@ -64,7 +69,14 @@ function App() {
             path="addProduct"
             element={<AddAProduct></AddAProduct>}
           ></Route>
-         
+          <Route
+            path="manageOrders"
+            element={<ManageAllOrders></ManageAllOrders>}
+          ></Route>
+          <Route
+            path="manageProduct"
+            element={<ManageProducts></ManageProducts>}
+          ></Route>
         </Route>
 
         <Route path="/login" element={<Login></Login>}></Route>

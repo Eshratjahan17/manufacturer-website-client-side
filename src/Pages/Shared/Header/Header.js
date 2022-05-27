@@ -104,12 +104,10 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         <label
-          
           tabIndex="1"
           for="dashboard-drawer"
           className="btn btn-ghost lg:hidden"
         >
-          
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -117,7 +115,7 @@ const Header = () => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <MenuIcon className='text-secondary'></MenuIcon>
+            <MenuIcon className="text-secondary"></MenuIcon>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
