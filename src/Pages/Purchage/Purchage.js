@@ -196,12 +196,21 @@ const Purchage = () => {
                     )}
                   </label>
                 </div>
-
-                <input
-                  type="submit"
-                  value="Go to Checkout"
-                  className="btn w-1/2 flex justify-center ml-40 mt-7 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
-                />
+                {errors.quantity?.type === "max" ||
+                errors.quantity?.type === "min" ? (
+                  <input
+                    type="submit"
+                    value="Go to Checkout"
+                    disabled
+                    className="btn w-1/2 flex justify-center ml-40 mt-7 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
+                  />
+                ) : (
+                  <input
+                    type="submit"
+                    value="Go to Checkout"
+                    className="btn w-1/2 flex justify-center ml-40 mt-7 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
+                  />
+                )}
               </form>
             </div>
           </div>
