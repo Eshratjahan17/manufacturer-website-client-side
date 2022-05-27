@@ -1,22 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useData from "../../Hooks/useData";
-import Loading from '../Shared/Loading/Loading';
+import DeleteModal from './DeleteModal';
 
 const ManageProducts = () => {
   const  [tools, isLoading, setIsLoading]=useData();
-  const handleDelete=(id)=>{
-    fetch(`http://localhost:5000/tools/${id}`,{
-      method:"DELETE",
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      if(isLoading){
-        return<Loading></Loading>
-        console.log(data);
-      }
-    })
+  const[deleteModal,setDeleteModal]=useState(null);
 
-  }
   
   return (
     <div>
@@ -32,19 +21,32 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {tools.map((tool,index) => (
+            {tools.map((tool, index) => (
               <tr>
-                <th>{index +1}</th>
+                <th>{index + 1}</th>
                 <td>{tool._id}</td>
                 <td>{tool.name}</td>
                 <td>
-                  <button onClick={()=>handleDelete(tool._id)} class="btn btn-sm btn-primary text-white">Delete</button>
+                  <label
+                    onClick={() => setDeleteModal(tool)}
+                    for="delete-modal"
+                    class="btn modal-button btn-sm btn-primary text-white"
+                  >
+                    Delete
+                  </label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {deleteModal && (
+        <DeleteModal
+          setDeleteModal={setDeleteModal}
+          deleteModal={deleteModal}
+          isLoading={isLoading}
+        ></DeleteModal>
+      )}
     </div>
   );
 };
