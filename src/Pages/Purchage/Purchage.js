@@ -5,28 +5,36 @@ import { useParams } from "react-router-dom";
 import auth from '../../firebase.init';
 
 const Purchage = () => {
+   
   const [user, loading, error] = useAuthState(auth);
-   let {id}=useParams();
-   console.log(id);
-   
-   
-   const [toolDetails,setToolDetails]=useState([]);
-   const [shippingDetails,setshippingDetails]=useState([]);
+  const [quantityError,setquantityError]=useState(false);
+  const [toolDetails,setToolDetails]=useState([]);
+ const [shippingDetails,setshippingDetails]=useState([]);
+   let { id } = useParams();
    useEffect(() => {
      fetch(`http://localhost:5000/tools/${id}`)
        .then((res) => res.json())
        .then((data) => setToolDetails(data));
    }, []);
    const {minimum,available,_id,price}=toolDetails;
-   console.log(toolDetails);
-  
+   const minValue=parseInt(minimum);
+  //  const preloaded = {
+  //    quantity: "12"
+  //  };
+  //  console.log(preloaded);
+ 
    const {
      register,
      handleSubmit,
      watch,
+    
+
+
      formState: { errors },
-   } = useForm();
+   } = useForm({});
+  
    const onSubmit = (data) => {
+     console.log(data,errors);
 
      setshippingDetails(data);
      const order = {
@@ -39,7 +47,7 @@ const Purchage = () => {
        tools: data.tools,
        price:data.price
      };
-     console.log(order);
+      console.log(order);
      fetch("http://localhost:5000/order", {
        method: "POST",
        headers: {
@@ -49,12 +57,13 @@ const Purchage = () => {
      })
        .then((res) => res.json())
        .then((data) => 
-       {console.log(data);
+       {
+         console.log(data);
         
       });
+      
      
    }; 
-  console.log(shippingDetails);
  
   return (
     <div className=" bg-slate-400">
@@ -70,6 +79,7 @@ const Purchage = () => {
               </div>
               <p>{user.email}</p>
             </div>
+
             {/* user Info */}
 
             <h1 class="text-5xl font-bold ">{toolDetails.name}</h1>
@@ -83,8 +93,7 @@ const Purchage = () => {
           <div class="card grow  w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
               <form onSubmit={handleSubmit(onSubmit)} className=" mx-auto ">
-                {/* Name */}
-                <div class="form-control  mx-auto">
+                <div class="form-control mx-auto">
                   <label class="label">
                     <span class="label-text">Name</span>
                   </label>
@@ -94,181 +103,89 @@ const Purchage = () => {
                     class="input input-bordered w-full max-w-xs"
                     {...register("name")}
                   />
-
-                  <label class="label">
-                    <span class="label-text-alt">
-                      {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )}
-                    </span>
-                  </label>
                 </div>
-                {/* Phone */}
                 <div class="form-control  mx-auto">
                   <label class="label">
-                    <span class="label-text">Phone Number</span>
+                    <span class="label-text">Phone</span>
                   </label>
                   <input
                     type="number"
-                    placeholder="Your Phone here"
+                    placeholder="Your phone here"
                     class="input input-bordered w-full max-w-xs"
                     {...register("phone")}
                   />
-
-                  <label class="label">
-                    <span class="label-text-alt">
-                      {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )}
-                    </span>
-                  </label>
                 </div>
-                {/* address */}
                 <div class="form-control  mx-auto">
                   <label class="label">
-                    <span class="label-text">Address </span>
-                  </label>
-                  <textarea
-                    type="address"
-                    placeholder="Your Name here"
-                    class="input input-bordered w-full max-w-xs"
-                    {...register("address")}
-                  />
-
-                  <label class="label">
-                    <span class="label-text-alt">
-                      {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )}
-                    </span>
-                  </label>
-                </div>
-                <div class="form-control mx-auto">
-                  <label class="label">
-                    <span class="label-text">Email</span>
+                    <span class="label-text">email</span>
                   </label>
                   <input
                     type="email"
-                    placeholder="Email here"
+                    placeholder="Your email here"
                     class="input input-bordered w-full max-w-xs"
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Email is reqiured",
-                      },
-                      pattern: {
-                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                        message: "Please enter a valid email",
-                      },
-                    })}
+                    {...register("email")}
                   />
-                  <label class="label">
-                    {errors.email?.type === "required" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.email.message}
-                      </span>
-                    )}
-                    {errors.email?.type === "pattern" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.email.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
                 <div class="form-control  mx-auto">
                   <label class="label">
-                    <span class="label-text">Product name</span>
+                    <span class="label-text">Address</span>
                   </label>
                   <input
                     type="text"
-                    placeholder=" Tools name here"
+                    placeholder="Your Address here"
                     class="input input-bordered w-full max-w-xs"
-                    {...register("tools")}
+                    {...register("address")}
                   />
-
-                  <label class="label">
-                    <span class="label-text-alt">
-                      {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )}
-                    </span>
-                  </label>
                 </div>
                 <div class="form-control  mx-auto">
                   <label class="label">
-                    <span class="label-text">Order Quantity</span>
+                    <span class="label-text">Product Name</span>
                   </label>
-                  {
-                    <input
-                      type="number"
-                      placeholder="order Quantity here"
-                      class="input input-bordered w-full max-w-xs"
-                      {...register("quantity", {
-                        required: {
-                          value: true,
-                          message: "This field  is reqiured",
-                        },
-                        // min: {
-                        //   value:minValue, //{minimum}
-                        //   message: "minimum value is 10",
-                        // },
-                      })}
-                    />
-                  }
-                  <label class="label">
-                    {errors.number?.type === "required" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.number.message}
-                      </span>
-                    )}
-                    {errors.number?.type === "min" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.number.message}
-                      </span>
-                    )}
-                  </label>
+                  <input
+                    type="text"
+                    placeholder="Product here"
+                    class="input input-bordered w-full max-w-xs"
+                    {...register("productName")}
+                  />
                 </div>
                 <div class="form-control  mx-auto">
                   <label class="label">
                     <span class="label-text">Price</span>
                   </label>
-                  {
-                    <input
-                      type="number"
-                      placeholder="Price here"
-                      class="input input-bordered w-full max-w-xs"
-                      {...register("price", {
-                        required: {
-                          value: true,
-                          message: "This field  is reqiured",
-                        },
-                        // min: {
-                        //   value:minValue, //{minimum}
-                        //   message: "minimum value is 10",
-                        // },
-                      })}
-                    />
-                  }
+                  <input
+                    type="number"
+                    placeholder="Price here"
+                    defaultValue={toolDetails.price}
+                    class="input input-bordered w-full max-w-xs"
+                    {...register("price")}
+                  />
+                </div>
+                {/* quantity */}
+                <div class="form-control  mx-auto">
                   <label class="label">
-                    {errors.price?.type === "required" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.price.message}
-                      </span>
-                    )}
-                    {errors.price?.type === "min" && (
-                      <span class="label-text-alt text-red-500">
-                        {errors.price.message}
-                      </span>
-                    )}
+                    <span class="label-text">Quantity</span>
+                  </label>
+                  <input
+                    type="number"
+                    class="input input-bordered w-full max-w-xs"
+                    defaultValue={toolDetails.minimum}
+                    {...register("quantity", {
+                      max: available,
+                      min: minimum,
+                       })}
+                  />
+                  <label class="label">
+                   {
+                     
+                   }
                   </label>
                 </div>
-               
-                  <input
-                    type="submit"
-                    value="Go to Checkout"
-                    className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
-                  />
-                
+
+                <input
+                  type="submit"
+                  value="Go to Checkout"
+                  className="btn w-1/2 flex justify-center ml-40 mt-7 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
+                />
               </form>
             </div>
           </div>

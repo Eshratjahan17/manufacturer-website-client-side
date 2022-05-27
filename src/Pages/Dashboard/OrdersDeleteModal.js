@@ -18,6 +18,7 @@ const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
            toast.success("Data deleted");
            
            setDeleteOrder(null);
+           console.log("deleted");
           
  
         }
