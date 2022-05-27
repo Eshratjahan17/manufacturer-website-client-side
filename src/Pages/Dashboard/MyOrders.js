@@ -58,19 +58,25 @@ const MyOrders = () => {
                 <td>{order.tools}</td>
                 <td>{order.quantity}</td>
                 <td>
-                  <Link to={`/payment/${order._id}`}>
-                    <button class="btn btn-secondary text-white">
-                      Payment
-                    </button>
-                  </Link>
+                  {order.paid ? (
+                    <Link to={`/payment/${order._id}`}>
+                      <button disabled class="btn btn-secondary text-white">
+                        Payment
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link to={`/payment/${order._id}`}>
+                      <button class="btn btn-secondary text-white">
+                        Payment
+                      </button>
+                    </Link>
+                  )}
                 </td>
 
                 <OrderDelete
                   order={order}
-                  
                   setDeleteOrder={setDeleteOrder}
                   deleteOrder={deleteOrder}
-                  
                 ></OrderDelete>
               </tr>
             ))}

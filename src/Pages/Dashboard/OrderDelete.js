@@ -3,7 +3,7 @@ import React from 'react';
 const OrderDelete = ({ order,  setDeleteOrder }) => {
   
   
-  const { _id } = order;
+  const { _id ,paid} = order;
   return (
     <div>
       <td>
