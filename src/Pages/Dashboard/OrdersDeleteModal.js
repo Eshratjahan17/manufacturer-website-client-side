@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import Loading from '../Shared/Loading/Loading';
 
 const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
   console.log(deleteOrder);
+  const [isLoading, setIsLoading] = useState(false);
 
  
   const handleDelete = (id) => {
-    
-    fetch(`http://localhost:5000/order/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => {
-         
-        {
+     fetch(`http://localhost:5000/order/${id}`, {
+       method: "DELETE",
+     })
+       .then((res) => {
+         res.json();
+       })
+       .then((data) => {
+         {
            toast.success("Data deleted");
-           
+
            setDeleteOrder(null);
            console.log("deleted");
-          
- 
-        }
-       
-      });
+         }
+       });
+       if(isLoading){
+         return<Loading></Loading>
+       }
+    
+  
   };
   return (
     <div>

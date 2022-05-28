@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../Shared/Loading/Loading';
 
 const ManageAllOrders = () => {
   const [allOrders,setAllOrders]=useState([]);
   const [orderStatus, setOrderStatus] = useState([]);
-  const [isLoading, setIsLoading] = useState([]);
-  useEffect(()=>{
+  const [isLoading, setIsLoading] = useState(false);
+
+  
+  useEffect(() => {
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
       .then((data) => {
-       
-        setAllOrders(data)});
-  },[]);
+        setAllOrders(data);
+      });
+  }, [allOrders]);
+  if (isLoading) {
+    return<Loading></Loading>
+  }
   const handleShipping=(id)=>{
     fetch(`http://localhost:5000/orders/paid/${id}`, {
       method: "PUT",
@@ -39,7 +45,6 @@ console.log(orderStatus);
               <tr>
                 <th>{index + 1}</th>
                 <td>{order._id}</td>
-                
 
                 <td>
                   {order?.paid ? (

@@ -29,9 +29,11 @@ const MyOrders = () => {
           }
           return res.json();
         })
-        .then((data) =>{ setMyOrders(data)});
+        .then((data) => {
+          setMyOrders(data);
+        });
     }
-  }, [user]);
+  }, [user, deleteOrder, myOrders]);
   console.log(myOrders);
 
   
