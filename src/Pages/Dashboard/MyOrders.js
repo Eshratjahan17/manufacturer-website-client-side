@@ -41,11 +41,11 @@ const MyOrders = () => {
     <div>
       <h1>My orders:{myOrders.length}</h1>
       <div class="overflow-x-auto">
-        <table class="table w-full">
+        <table class="table lg:w-full sm:w-1/2" >
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
+              
               <th>Tools Name</th>
               <th>Quantity</th>
               <th>Payment</th>
@@ -56,7 +56,7 @@ const MyOrders = () => {
             {myOrders.map((order, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td>{order.name}</td>
+                
                 <td>{order.tools}</td>
                 <td>{order.quantity}</td>
                 <td>
