@@ -29,7 +29,7 @@ const MyOrders = () => {
           }
           return res.json();
         })
-        .then((data) => setMyOrders(data));
+        .then((data) =>{ setMyOrders(data)});
     }
   }, [user]);
   console.log(myOrders);
@@ -85,6 +85,7 @@ const MyOrders = () => {
       </div>
       {deleteOrder && (
         <OrdersDeleteModal
+          
           setDeleteOrder={setDeleteOrder}
           deleteOrder={deleteOrder}
         ></OrdersDeleteModal>

@@ -2,6 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
+  console.log(deleteOrder);
 
  
   const handleDelete = (id) => {
@@ -33,15 +34,25 @@ const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
           <h3 class="font-bold text-lg">
             Are You sure to delete {deleteOrder.tools}?
           </h3>
-        
+
           <div class="modal-action">
-            <button
-              onClick={() => handleDelete(deleteOrder._id)}
-              class="btn btn-sm  btn-primary text-white"
-            >
-              Delete
-            </button>
-            <label for="order-delete-modal" class="btn btn-sm text-white ">
+            
+              {/* <button
+              disabled
+                onClick={() => handleDelete(deleteOrder._id)}
+                class="btn btn-sm  btn-primary text-white"
+              >
+                Delete
+              </button> */}
+            
+              <button
+                onClick={() => handleDelete(deleteOrder._id)}
+                class="btn btn-sm  btn-primary text-white"
+              >
+                Delete
+              </button>
+            
+            <label  for="order-delete-modal" class="btn btn-sm text-white ">
               Cancle
             </label>
           </div>

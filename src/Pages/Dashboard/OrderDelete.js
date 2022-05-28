@@ -7,14 +7,24 @@ const OrderDelete = ({ order,  setDeleteOrder }) => {
   return (
     <div>
       <td>
-        
-        <label
-          onClick={setDeleteOrder(order)}
-          for="order-delete-modal"
-          class="btn modal-button btn-sm btn-primary text-white"
-        >
-          Delete
-        </label>
+        {paid ? (
+          <label
+            onClick={setDeleteOrder(order)}
+            disabled
+            for="order-delete-modal"
+            class="btn modal-button btn-sm btn-primary text-white"
+          >
+            Delete
+          </label>
+        ) : (
+          <label
+            onClick={setDeleteOrder(order)}
+            for="order-delete-modal"
+            class="btn modal-button btn-sm btn-primary text-white"
+          >
+            Delete
+          </label>
+        )}
       </td>
     </div>
   );
