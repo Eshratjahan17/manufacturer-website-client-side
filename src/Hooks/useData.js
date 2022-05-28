@@ -5,7 +5,7 @@ const useData = () => {
   const [isLoading,setIsLoading]=useState(false);
 
      useEffect(() => {
-       fetch("http://localhost:5000/addProduct")
+       fetch("https://dry-beyond-73074.herokuapp.com/addProduct")
          .then((res) => res.json())
          .then((data) => {
           const reversed= data.reverse().slice(0,6);

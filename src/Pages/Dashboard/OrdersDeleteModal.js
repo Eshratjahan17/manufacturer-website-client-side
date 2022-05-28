@@ -8,7 +8,7 @@ const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
 
  
   const handleDelete = (id) => {
-     fetch(`http://localhost:5000/order/${id}`, {
+     fetch(`https://dry-beyond-73074.herokuapp.com/order/${id}`, {
        method: "DELETE",
      })
        .then((res) => {
@@ -38,14 +38,6 @@ const OrdersDeleteModal = ({ deleteOrder, setDeleteOrder }) => {
           </h3>
 
           <div class="modal-action">
-            
-              {/* <button
-              disabled
-                onClick={() => handleDelete(deleteOrder._id)}
-                class="btn btn-sm  btn-primary text-white"
-              >
-                Delete
-              </button> */}
             
               <button
                 onClick={() => handleDelete(deleteOrder._id)}

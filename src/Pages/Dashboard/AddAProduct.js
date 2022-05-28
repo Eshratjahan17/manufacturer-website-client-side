@@ -9,7 +9,7 @@ const AddAProduct = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -22,10 +22,10 @@ const AddAProduct = () => {
     const minimum = data.minimum;
     const brand = data.madein;
     const productInfo={name,picture,about,price,available,minimum,brand}
-    console.log(productInfo);
+    
 
    
-   fetch("http://localhost:5000/addProduct", {
+   fetch("https://dry-beyond-73074.herokuapp.com/addProduct", {
      method: "POST",
      body: JSON.stringify(productInfo),
      headers: {
@@ -35,22 +35,34 @@ const AddAProduct = () => {
      .then((res) => res.json())
      .then((data) =>{
        toast('Product Added SucessFully');
+        reset({
+          productName: " ",
+          madein: " ",
+          about: " ",
+          price: " ",
+          available: " ",
+          minimum: " ",
+          productUrl: " ",
+        });
        
 
-       console.log(data);
+       
      } )
 
 
     
   }
   return (
-    <div>
-      <h1 className="text-center text-3xl text-secondary font-bold mt-9 ">
+    <div className="overflow-x-hidden bg-base-200">
+      <h1 className="text-center text-3xl text-secondary font-bold mt-9  ">
         Add a Product
       </h1>
       <div>
-        <form className="w-full mx-auto " onSubmit={handleSubmit(onSubmit)}>
-          {/* register your input into the hook by invoking the "register" function */}
+        <form
+          className="w-full mx-auto ml-28 mt-10 drop-shadow-md "
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
               <span class="label-text">Product Name</span>
@@ -193,7 +205,7 @@ const AddAProduct = () => {
           <input
             type="submit"
             value="Add Product"
-            className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+            className="btn w-1/3 ml-64 flex justify-center rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
         </form>
       </div>

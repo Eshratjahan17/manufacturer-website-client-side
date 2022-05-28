@@ -13,7 +13,7 @@ const Purchage = () => {
  
    let { id } = useParams();
    useEffect(() => {
-     fetch(`http://localhost:5000/tools/${id}`)
+     fetch(`https://dry-beyond-73074.herokuapp.com/tools/${id}`)
        .then((res) => res.json())
        .then((data) => setToolDetails(data));
    }, []);
@@ -42,7 +42,7 @@ const Purchage = () => {
        price:data.price
      };
       console.log(order);
-     fetch("http://localhost:5000/order", {
+     fetch("https://dry-beyond-73074.herokuapp.com/order", {
        method: "POST",
        headers: {
          "content-type": "application/json",
@@ -75,7 +75,7 @@ const Purchage = () => {
   return (
     <div className=" bg-slate-400">
       <div class="hero  min-h-screen bg-base-200">
-        <div class="hero-content grid grid-cols-2 ">
+        <div class="hero-content grid lg:grid-cols-2 sm:grid-cols-1 ">
           <div class="text-center lg:text-left basis-1/4">
             {/* user Info */}
             <div className="mb-9">

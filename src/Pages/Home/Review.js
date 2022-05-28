@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Review = ({ review }) => {
-  console.log(review);
+  
   return (
     <div class="card w-96 bg-base-100 shadow-xl border-2 border-secondary ">
       <div class="avatar absolute -right-0 -top-9 border-3">

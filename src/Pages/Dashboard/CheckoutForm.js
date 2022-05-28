@@ -11,7 +11,7 @@ const CheckoutForm = ({order}) => {
   const [processing, setProcessing] = useState(false);
   const { price,name,email,_id } = order;
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://dry-beyond-73074.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,7 +27,7 @@ const CheckoutForm = ({order}) => {
       });
   }, [price]);
 
- console.log(order);
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -71,7 +71,7 @@ const CheckoutForm = ({order}) => {
 
         }
 
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://dry-beyond-73074.herokuapp.com/order/${_id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
@@ -82,7 +82,7 @@ const CheckoutForm = ({order}) => {
           .then((res) => res.json())
           .then((data) => {
             setProcessing(false);
-            console.log(data);
+           
           });
       }
   };

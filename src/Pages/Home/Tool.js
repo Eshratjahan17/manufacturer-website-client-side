@@ -6,7 +6,7 @@ const Tool = ({tool}) => {
   const navigate = useNavigate();
   const {_id,name,about,price,picture,minimum,available}=tool;
   const handletools=(id)=>{
-    console.log(id);
+    
     navigate(`/tools/${id}`);
   }
   return (

@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 const AllProduct = ({tool}) => {
-  console.log(tool);
+  
   const navigate = useNavigate();
   const {_id,picture,name,about,price,minimum,available}=tool;
   const handleAllTools = (id) => {
-    console.log(id);
+    
     navigate(`/tools/${id}`);
   };
   return (

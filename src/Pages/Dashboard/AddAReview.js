@@ -6,7 +6,7 @@ const AddAReview = () => {
    const {
      register,
      handleSubmit,
-     watch,
+     reset,
      formState: { errors },
    } = useForm();
    const onSubmit = (data) => {
@@ -16,8 +16,8 @@ const AddAReview = () => {
      const ratings = data.ratings;
      const picture = data.image;
      const userReview = { name, email, about, ratings, picture };
-     console.log(userReview);
-     fetch("http://localhost:5000/addreview", {
+     
+     fetch("https://dry-beyond-73074.herokuapp.com/addreview", {
        method: "POST",
        body: JSON.stringify(userReview),
        headers: {
@@ -28,13 +28,25 @@ const AddAReview = () => {
        .then((res) => res.json())
        .then((data) => {
          toast('Review added');
-         console.log(data)});
+         console.log(data)
+        reset({
+          displayName: " ",
+          email: " ",
+          review: " ",
+          ratings: " ",
+          image: " ",
+         
+        });});
    }
   return (
-    <div>
-      <h1>Add Reviwe here</h1>
-      <form className="w-full mx-auto " onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
+    <div className="bg-base-200">
+      <h1 className="text-center text-3xl text-secondary font-bold mt-9  ">
+        Add A Review !!
+      </h1>
+      <form
+        className="w-full mx-auto  ml-28 mt-10 drop-shadow-md"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div class="form-control w-1/2 mx-auto">
           <label class="label">
             <span class="label-text">Name</span>
@@ -150,8 +162,8 @@ const AddAReview = () => {
 
         <input
           type="submit"
-          value="Post reviwe"
-          className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+          value="Post review"
+          className="btn w-1/3 flex justify-center ml-64 mb-32 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
         />
       </form>
     </div>

@@ -2,17 +2,19 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
+import auth from "../../firebase.init";
 
 const MyProfile = () => {
+  
   const [user]=useAuthState(auth);
   const currentEmail=user.email;
+  
  
  
  const {
    register,
    handleSubmit,
-   watch,
+   reset,
    formState: { errors },
  } = useForm();
  const onSubmit = (data) => {
@@ -23,7 +25,7 @@ const MyProfile = () => {
    const address = data.address;
    const updateUser={email,name,phone,url,address};
    console.log(updateUser);
-   fetch(`http://localhost:5000/user/${currentEmail}`, {
+   fetch(`https://dry-beyond-73074.herokuapp.com/user/${currentEmail}`, {
      method: "PUT",
      headers: {
        "content-type": "application/json",
@@ -34,6 +36,13 @@ const MyProfile = () => {
      .then((res) => res.json())
      .then((data) => {
        toast.success("Data updated Succesfully");
+        reset({
+          displayName: " ",
+          phone: " ",
+          address: " ",
+          email: " ",
+          url: " ",
+        });
         
      });
     
@@ -41,12 +50,11 @@ const MyProfile = () => {
     
   }
   return (
-    <div>
-      <h1>My Profile{user?.email}</h1>
-      <div className="mb-9">
-        <div class="avatar placeholder justify-start ">
+    <div className='bg-base-200'>
+      <div className="mb-9 mx-8 pt-8">
+        <div class="avatar placeholder justify-end ">
           <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-            <span class="text-xl text-center">{user?.displayName}</span>
+            <span class="text-xl text-center text-white ">{user?.displayName}</span>
           </div>
         </div>
         <p>{user.email}</p>
@@ -120,6 +128,7 @@ const MyProfile = () => {
               )}
             </label>
           </div>
+          
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
               <span class="label-text">Address</span>
@@ -170,7 +179,7 @@ const MyProfile = () => {
           <input
             type="submit"
             value="Edit"
-            className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+            className="btn w-1/3 flex justify-center items-center ml-64 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
         </form>
       </div>

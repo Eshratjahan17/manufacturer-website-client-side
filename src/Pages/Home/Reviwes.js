@@ -4,11 +4,11 @@ import Review from './Review';
 const Reviwes = () => {
   const [reviews,setReviews]=useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/addreview")
+    fetch("https://dry-beyond-73074.herokuapp.com/addreview")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
-        console.log(data);
+        
       });
   }, [reviews]);
   return (

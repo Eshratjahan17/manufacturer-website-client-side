@@ -5,23 +5,25 @@ import UserInfo from './UserInfo';
 
 const ManageUsers = () => {
   const { data: users, isLoding,refetch } = useQuery("users", () =>
-    fetch("http://localhost:5000/user")
+    fetch("https://dry-beyond-73074.herokuapp.com/user")
     .then(res => res.json())
   );
-  console.log(users);
+  
   if(isLoding){
     return <Loading></Loading>
   }
   return (
     <div>
-      <h1>This is users for admin{users?.length}</h1>
+      <h1 className="text-secondary font-semibold text-left my-7 text-2xl">
+        All Users
+      </h1>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Id</th>
-              
+              <th>email</th>
+
               <th>Make Admin</th>
             </tr>
           </thead>

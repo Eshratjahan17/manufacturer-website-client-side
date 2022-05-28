@@ -8,7 +8,7 @@ import logo from '../../../utilities/icons/logo.png';
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
+  
   const handleSignOut = () => {
     signOut(auth);
     localStorage.removeItem('accessToken');
@@ -18,9 +18,7 @@ const Header = () => {
        <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/">Home</Link>
        </li>
-       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
-         <Link to="/about">About us</Link>
-       </li>
+       
        <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/myportfolio">My Portfolio</Link>
        </li>
@@ -30,9 +28,7 @@ const Header = () => {
        <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
          <Link to="/">Reviwes</Link>
        </li>
-       <li className="hover:bg-secondary hover:text-white text-secondary font-semibold rounded-lg">
-         <Link to="/contactus">Contact Us</Link>
-       </li>
+       
      </>
    );
   return (

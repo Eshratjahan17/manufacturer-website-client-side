@@ -4,9 +4,9 @@ import Loading from '../Shared/Loading/Loading';
 
 const DeleteModal = ({ deleteModal, isLoading, setDeleteModal }) => {
   const { name } = deleteModal;
-  console.log(name);
+  
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/tools/${id}`, {
+    fetch(`https://dry-beyond-73074.herokuapp.com/tools/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

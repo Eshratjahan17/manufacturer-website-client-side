@@ -14,7 +14,7 @@ const Dashboard = () => {
       <div class="drawer drawer-mobile">
         <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content ">
-          <h1>Dashboard</h1>
+          
           <Outlet></Outlet>
           {/* <!-- Page content here --> */}
         </div>
@@ -27,9 +27,7 @@ const Dashboard = () => {
             </li>
             {!admin && (
               <>
-                {/* <li>
-                  <Link to="/dashboard/myProfile">My Profile</Link>
-                </li> */}
+              
                 <li>
                   <Link to="/dashboard/myorders">My Orders</Link>
                 </li>

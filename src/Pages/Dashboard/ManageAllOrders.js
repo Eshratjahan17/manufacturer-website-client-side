@@ -8,7 +8,7 @@ const ManageAllOrders = () => {
 
   
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://dry-beyond-73074.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => {
          if (isLoading) {
@@ -23,27 +23,28 @@ const ManageAllOrders = () => {
   }, [allOrders, orderStatus]);
  
   const handleShipping=(id)=>{
-    fetch(`http://localhost:5000/orders/paid/${id}`, {
+    fetch(`https://dry-beyond-73074.herokuapp.com/orders/paid/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount>0) {
           setOrderStatus(data);
-          console.log(data);
+          
         }
       });
   }
-console.log(orderStatus);
+
   return (
     <div>
-      <h1>Manage all orders</h1>
+      <h1 className='text-secondary font-semibold text-left my-7 text-2xl'>Manage all orders</h1>
       <div class="overflow-x-auto">
-        <table class="lg:table w-full sm:w-1/2 ">
+        <table class="lg:table w-full sm:w-1/3 ">
           <thead>
             <tr>
               <th></th>
               <th>Id</th>
+              <th>Product name</th>
               <th>Payment Status</th>
               <th>Order Status</th>
             </tr>
@@ -53,6 +54,7 @@ console.log(orderStatus);
               <tr>
                 <th>{index + 1}</th>
                 <td>{order._id}</td>
+                <td>{order.tools}</td>
 
                 <td>
                   {order?.paid ? (
@@ -68,7 +70,7 @@ console.log(orderStatus);
                 <td>
                   {
                     order.status ==="shipped" ?
-                    /* {order.paid && (status === "paid") ? ( */
+                    
                   
                   <button
                     onClick={() => handleShipping(order._id)}

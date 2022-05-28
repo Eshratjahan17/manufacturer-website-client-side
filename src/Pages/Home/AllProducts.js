@@ -4,7 +4,7 @@ const AllProducts = () => {
   const [Alldata,setAllData]=useState([]);
   const [isLoading, setisLoading] = useState([]);
   useEffect(()=>{
-    fetch("http://localhost:5000/addProduct")
+    fetch("https://dry-beyond-73074.herokuapp.com/addProduct")
       .then((res) => res.json())
       .then((data) => setAllData(data));
   },[])

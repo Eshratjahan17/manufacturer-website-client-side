@@ -9,9 +9,11 @@ const ManageProducts = () => {
   
   return (
     <div>
-      <h1>manage Products</h1>
+      <h1 className="text-secondary font-semibold text-left my-7 text-2xl">
+        Manage Products
+      </h1>
       <div class="overflow-x-auto">
-        <table class="table lg:w-full sm:w-1/2">
+        <table class="table lg:w-1/2 sm:w-1/2">
           <thead>
             <tr>
               <th></th>
