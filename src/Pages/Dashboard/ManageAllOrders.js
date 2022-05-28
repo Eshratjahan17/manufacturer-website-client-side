@@ -2,12 +2,25 @@ import React, { useEffect, useState } from 'react';
 
 const ManageAllOrders = () => {
   const [allOrders,setAllOrders]=useState([]);
+  const [orderStatus, setOrderStatus] = useState([]);
+  const [isLoading, setIsLoading] = useState([]);
   useEffect(()=>{
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
-      .then((data) => setAllOrders(data));
-  },[])
-
+      .then((data) => {
+       
+        setAllOrders(data)});
+  },[]);
+  const handleShipping=(id)=>{
+    fetch(`http://localhost:5000/orders/paid/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setOrderStatus(data);
+      console.log(data)});
+  }
+console.log(orderStatus);
   return (
     <div>
       <h1>Manage all orders</h1>
@@ -17,9 +30,6 @@ const ManageAllOrders = () => {
             <tr>
               <th></th>
               <th>Id</th>
-              <th>Tools Name</th>
-              
-             
               <th>Payment Status</th>
               <th>Order Status</th>
             </tr>
@@ -29,19 +39,35 @@ const ManageAllOrders = () => {
               <tr>
                 <th>{index + 1}</th>
                 <td>{order._id}</td>
-                <td>{order.tools}</td>
                 
-                
-                
+
                 <td>
-                  <button class="btn btn-xs btn-secondary text-white">
-                    Tiny
-                  </button>
+                  {order?.paid ? (
+                    <button class="btn btn-xs btn-secondary text-white">
+                      Paid
+                    </button>
+                  ) : (
+                    <button class="btn btn-xs btn-secondary text-white">
+                      Unpaid
+                    </button>
+                  )}
                 </td>
                 <td>
-                  <button class="btn btn-xs btn-secondary text-white">
-                    Tiny
-                  </button>
+                  {order.paid && orderStatus.acknowledged ? (
+                    <button
+                      onClick={() => handleShipping(order._id)}
+                      class="btn btn-xs btn-secondary text-white"
+                    >
+                      Shipped
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleShipping(order._id)}
+                      class="btn btn-xs btn-secondary text-white"
+                    >
+                      Pending
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

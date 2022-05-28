@@ -92,10 +92,25 @@ const Purchage = () => {
             <h1 class="text-5xl font-bold ">{toolDetails.name}</h1>
             <p class="py-6">
               <p class="">{toolDetails.about}</p>
-              Price: {toolDetails.price}
+              <span className="font-bold text-lg">Price:$ </span>{" "}
+              {toolDetails.price}
             </p>
-            <p class="">Available: {toolDetails.available}</p>
-            <p class="">Minimum-Order: {toolDetails.minimum}</p>
+            <p class="">
+              <span className="font-bold text-lg">Available: </span>
+              {toolDetails.available}
+            </p>
+            <p class="">
+              <span className="font-bold text-lg"> Minimum-Order: </span>
+              {toolDetails.minimum}
+            </p>
+            <p class="">
+              <span className="font-bold text-lg">Brand: </span>
+              {toolDetails.brand}
+            </p>
+            <p class="">
+              <span className="font-bold text-lg">Made In:</span>
+              {toolDetails.madeIn}
+            </p>
           </div>
           <div class="card grow  w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
