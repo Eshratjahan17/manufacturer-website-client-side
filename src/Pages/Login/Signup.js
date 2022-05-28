@@ -49,7 +49,7 @@ const Signup = () => {
         Sign Up
       </h1>
       <div className="border-x  ">
-        <form className="w-1/2 mx-auto " onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:w-1/2 sm:w-full mx-auto " onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
@@ -134,7 +134,7 @@ const Signup = () => {
           <input
             type="submit"
             value="Sign Up"
-            className="btn w-1/2 flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
+            className="btn lg:w-1/2 sm:w-full flex justify-center ml-40 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white  "
           />
           {signupError}
         </form>

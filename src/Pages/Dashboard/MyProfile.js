@@ -50,17 +50,19 @@ const MyProfile = () => {
     
   }
   return (
-    <div className='bg-base-200'>
-      <div className="mb-9 mx-8 pt-8">
+    <div className="bg-base-200">
+      <div className="mb-9 mx-40 pt-8">
         <div class="avatar placeholder justify-end ">
           <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-            <span class="text-xl text-center text-white ">{user?.displayName}</span>
+            <span class="text-xl text-center text-white ">
+              {user?.displayName}
+            </span>
           </div>
         </div>
         <p>{user.email}</p>
       </div>
       <div>
-        <form className="w-full mx-auto " onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full  mx-auto  " onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
@@ -128,7 +130,7 @@ const MyProfile = () => {
               )}
             </label>
           </div>
-          
+
           <div class="form-control w-1/2 mx-auto">
             <label class="label">
               <span class="label-text">Address</span>
@@ -175,11 +177,11 @@ const MyProfile = () => {
               )}
             </label>
           </div>
-        
+
           <input
             type="submit"
             value="Edit"
-            className="btn w-1/3 flex justify-center items-center ml-64 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+            className="btn lg:w-1/3 flex justify-center items-center lg:ml-64 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
         </form>
       </div>

@@ -44,28 +44,28 @@ const AddAReview = () => {
         Add A Review !!
       </h1>
       <form
-        className="w-full mx-auto  ml-28 mt-10 drop-shadow-md"
+        className="lg:w-full sm:w-1/2 mx-auto  ml-28 mt-10 drop-shadow-md "
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div class="form-control w-1/2 mx-auto">
+        <div class="form-control lg:w-1/2 sm:w-full mx-auto">
           <label class="label">
             <span class="label-text">Name</span>
           </label>
           <input
             type="text"
             placeholder="Your Name here"
-            class="input input-bordered w-full max-w-xs"
+            class="input input-bordered lg:w-1/2 sm:w-full max-w-xs"
             {...register("displayName")}
           />
         </div>
-        <div class="form-control w-1/2 mx-auto">
+        <div class="form-control lg:w-1/2 sm:w-full mx-auto">
           <label class="label">
             <span class="label-text">Email</span>
           </label>
           <input
             type="email"
             placeholder="Email here"
-            class="input input-bordered w-full max-w-xs"
+            class="input input-bordered lg:w-1/2 sm:w-full max-w-xs"
             {...register("email", {
               required: {
                 value: true,
@@ -90,14 +90,14 @@ const AddAReview = () => {
             )}
           </label>
         </div>
-        <div class="form-control w-1/2 mx-auto">
+        <div class="form-control lg:w-1/2 sm:w-full mx-auto">
           <label class="label">
             <span class="label-text">Review Here</span>
           </label>
           <input
             type="text"
             placeholder="Reviwe here"
-            class="input input-bordered input-lg w-full max-w-xs"
+            class="input input-bordered input-lg lg:w-1/2 sm:w-full max-w-xs"
             {...register("review", {
               required: {
                 value: true,
@@ -113,7 +113,7 @@ const AddAReview = () => {
             )}
           </label>
         </div>
-        <div class="form-control w-1/2 mx-auto">
+        <div class="form-control lg:w-1/2 sm:w-full mx-auto">
           <label class="label">
             <span class="label-text">Ratings</span>
           </label>
@@ -136,7 +136,7 @@ const AddAReview = () => {
             )}
           </label>
         </div>
-        <div class="form-control w-1/2 mx-auto">
+        <div class="form-control lg:w-1/2 sm:w-full mx-auto">
           <label class="label">
             <span class="label-text">Your Avatar link</span>
           </label>
@@ -163,7 +163,7 @@ const AddAReview = () => {
         <input
           type="submit"
           value="Post review"
-          className="btn w-1/3 flex justify-center ml-64 mb-32 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+          className="btn lg:w-1/3 sm:w-full flex justify-center  lg:ml-64 lg:mb-32 rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
         />
       </form>
     </div>

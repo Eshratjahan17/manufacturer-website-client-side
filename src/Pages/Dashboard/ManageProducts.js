@@ -13,11 +13,11 @@ const ManageProducts = () => {
         Manage Products
       </h1>
       <div class="overflow-x-auto">
-        <table class="table lg:w-1/2 sm:w-1/2">
+        <table class="table lg:w-1/2 sm:w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Id:</th>
+              
               <th>Name</th>
               <th>Delete</th>
             </tr>
@@ -26,7 +26,7 @@ const ManageProducts = () => {
             {tools.map((tool, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td>{tool._id}</td>
+                
                 <td>{tool.name}</td>
                 <td>
                   <label

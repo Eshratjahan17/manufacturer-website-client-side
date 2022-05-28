@@ -62,19 +62,18 @@ const AddAProduct = () => {
           className="w-full mx-auto ml-28 mt-10 drop-shadow-md "
           onSubmit={handleSubmit(onSubmit)}
         >
-          
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Product Name</span>
             </label>
             <input
               type="text"
               placeholder="Product Name here"
-              class="input input-bordered w-full max-w-xs"
+              class="input input-bordered lg:w-1/2 sm:w-full max-w-xs"
               {...register("productName")}
             />
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Made In</span>
             </label>
@@ -86,7 +85,7 @@ const AddAProduct = () => {
             />
           </div>
 
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">About</span>
             </label>
@@ -109,14 +108,14 @@ const AddAProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Price</span>
             </label>
             <input
               type="number"
               placeholder="Price here"
-              class="input input-bordered w-full max-w-xs"
+              class="input input-bordered lg:w-1/2 sm:w-full max-w-xs"
               {...register("price", {
                 required: {
                   value: true,
@@ -132,7 +131,7 @@ const AddAProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Available in Stock</span>
             </label>
@@ -155,7 +154,7 @@ const AddAProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Minimum Order</span>
             </label>
@@ -178,7 +177,7 @@ const AddAProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Product Image</span>
             </label>
@@ -205,7 +204,7 @@ const AddAProduct = () => {
           <input
             type="submit"
             value="Add Product"
-            className="btn w-1/3 ml-64 flex justify-center rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+            className="btn lg:w-1/3 sm:w-full lg:ml-64 flex justify-center rounded-full  hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
         </form>
       </div>

@@ -60,7 +60,7 @@ const Login = () => {
       <div className="border-x  ">
         <form className="w-1/2 mx-auto " onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Email</span>
             </label>
@@ -92,7 +92,7 @@ const Login = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-1/2 mx-auto">
+          <div class="form-control lg:w-1/2 sm:w-full mx-auto">
             <label class="label">
               <span class="label-text">Password</span>
             </label>
@@ -128,7 +128,7 @@ const Login = () => {
           <input
             type="submit"
             value="Log In"
-            className="btn w-1/2 flex justify-center ml-40  rounded-full  border-0 hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
+            className="btn lg:w-1/2 sm:w-full flex justify-center lg:ml-40  rounded-full  border-0 hover:border-2 hover:bg-transparent hover:text-secondary bg-secondary text-white "
           />
           {errorMessage}
         </form>
