@@ -11,20 +11,28 @@ const ManageAllOrders = () => {
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
       .then((data) => {
-        setAllOrders(data);
+         if (isLoading) {
+           return <Loading></Loading>;
+         }
+         else{
+            setAllOrders(data);
+
+         }
+       
       });
-  }, [allOrders]);
-  if (isLoading) {
-    return<Loading></Loading>
-  }
+  }, [allOrders, orderStatus]);
+ 
   const handleShipping=(id)=>{
     fetch(`http://localhost:5000/orders/paid/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrderStatus(data);
-      console.log(data)});
+        if (data.modifiedCount>0) {
+          setOrderStatus(data);
+          console.log(data);
+        }
+      });
   }
 console.log(orderStatus);
   return (
@@ -58,21 +66,24 @@ console.log(orderStatus);
                   )}
                 </td>
                 <td>
-                  {order.paid && orderStatus.acknowledged ? (
-                    <button
-                      onClick={() => handleShipping(order._id)}
-                      class="btn btn-xs btn-secondary text-white"
-                    >
-                      Shipped
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleShipping(order._id)}
-                      class="btn btn-xs btn-secondary text-white"
-                    >
-                      Pending
-                    </button>
-                  )}
+                  {
+                    order.status ==="shipped" ?
+                    /* {order.paid && (status === "paid") ? ( */
+                  
+                  <button
+                    onClick={() => handleShipping(order._id)}
+                    class="btn btn-xs btn-secondary text-white"
+                  >
+                    Shipped
+                  </button>
+                   : 
+                  <button
+                    onClick={() => handleShipping(order._id)}
+                    class="btn btn-xs btn-secondary text-white"
+                  >
+                    Pending
+                  </button>
+                }
                 </td>
               </tr>
             ))}
